@@ -20,6 +20,9 @@
             </plugin>
         </plugins>
     </build>
+    <modules>
+        <module>hw_01_base_operations</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
