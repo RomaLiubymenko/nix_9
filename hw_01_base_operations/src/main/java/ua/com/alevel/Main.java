@@ -7,7 +7,7 @@ import ua.com.alevel.service.implementation.FirstTaskServiceImpl;
 import ua.com.alevel.service.implementation.SecondTaskServiceImpl;
 import ua.com.alevel.service.implementation.ThirdTaskServiceImpl;
 
-import java.awt.*;
+import javax.swing.*;
 import java.util.Map;
 
 public class Main {
@@ -29,6 +29,9 @@ public class Main {
                 new Task(1, "Second task", commonMessage + secondTaskDescription), new SecondTaskServiceImpl(),
                 new Task(2, "Third task", thirdTaskDescription), new ThirdTaskServiceImpl()
         );
-        EventQueue.invokeLater(() -> new MainScreen(tasks).setVisible(true));
+        SwingUtilities.invokeLater(() -> {
+            JFrame mainFrame = new MainScreen("hw_01_base_operations", tasks);
+            mainFrame.setVisible(true);
+        });
     }
 }

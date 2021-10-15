@@ -96,7 +96,7 @@
               <background color="-8785263"/>
               <font name="Berlin Sans FB Demi" size="36" style="0"/>
               <foreground color="-904627"/>
-              <text value="Hello, user"/>
+              <text value="Hello and Welcome"/>
             </properties>
           </component>
           <component id="fb267" class="javax.swing.JButton" binding="goToSelectedTaskButton">
