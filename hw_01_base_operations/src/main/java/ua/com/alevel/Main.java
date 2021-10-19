@@ -1,8 +1,8 @@
 package ua.com.alevel;
 
-import ua.com.alevel.entity.Task;
-import ua.com.alevel.form.MainScreen;
-import ua.com.alevel.service.TaskService;
+import ua.alevel.commons.entity.Task;
+import ua.alevel.commons.form.MainScreen;
+import ua.alevel.commons.service.TaskService;
 import ua.com.alevel.service.implementation.FirstTaskServiceImpl;
 import ua.com.alevel.service.implementation.SecondTaskServiceImpl;
 import ua.com.alevel.service.implementation.ThirdTaskServiceImpl;

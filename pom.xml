@@ -23,6 +23,7 @@
 
     <modules>
         <module>hw_01_base_operations</module>
+        <module>common_ui</module>
     </modules>
 
     <properties>

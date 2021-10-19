@@ -1,4 +1,4 @@
-package ua.com.alevel.service;
+package ua.alevel.commons.service;
 
 public interface TaskService {
     String getSolutionForTaskByString(String stringToSearch);

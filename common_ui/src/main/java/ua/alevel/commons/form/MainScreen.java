@@ -1,9 +1,9 @@
-package ua.com.alevel.form;
+package ua.alevel.commons.form;
 
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
-import ua.com.alevel.entity.Task;
-import ua.com.alevel.service.TaskService;
+import ua.alevel.commons.entity.Task;
+import ua.alevel.commons.service.TaskService;
 
 import javax.swing.*;
 import javax.swing.plaf.FontUIResource;

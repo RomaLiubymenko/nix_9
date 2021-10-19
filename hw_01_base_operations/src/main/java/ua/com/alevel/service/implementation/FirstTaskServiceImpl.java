@@ -1,6 +1,6 @@
 package ua.com.alevel.service.implementation;
 
-import ua.com.alevel.service.TaskService;
+import ua.alevel.commons.service.TaskService;
 
 import java.util.ArrayList;
 import java.util.List;
