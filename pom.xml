@@ -24,6 +24,7 @@
     <modules>
         <module>hw_01_base_operations</module>
         <module>common_ui</module>
+        <module>hw_02_strings</module>
     </modules>
 
     <properties>

@@ -3,9 +3,9 @@ package ua.com.alevel;
 import ua.alevel.commons.entity.Task;
 import ua.alevel.commons.form.MainScreen;
 import ua.alevel.commons.service.TaskService;
-import ua.com.alevel.service.implementation.FirstTaskServiceImpl;
-import ua.com.alevel.service.implementation.SecondTaskServiceImpl;
-import ua.com.alevel.service.implementation.ThirdTaskServiceImpl;
+import ua.com.alevel.service.impl.FirstTaskServiceImpl;
+import ua.com.alevel.service.impl.SecondTaskServiceImpl;
+import ua.com.alevel.service.impl.ThirdTaskServiceImpl;
 
 import javax.swing.*;
 import java.util.Map;
