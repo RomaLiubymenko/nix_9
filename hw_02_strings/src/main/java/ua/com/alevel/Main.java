@@ -1,6 +1,6 @@
 package ua.com.alevel;
 
-import ua.com.alevel.form.ReverseStringForm;
+import ua.alevel.commons.form.ReverseStringForm;
 import ua.com.alevel.service.impl.ReverseStringServiceImpl;
 
 import javax.swing.*;

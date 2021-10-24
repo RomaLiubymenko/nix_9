@@ -1,4 +1,4 @@
-package ua.com.alevel.service;
+package ua.alevel.commons.service;
 
 public interface ReverseStringService {
     String reverse(String str, boolean isAllStringReverse);

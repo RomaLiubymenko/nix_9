@@ -1,6 +1,6 @@
-package ua.com.alevel.form;
+package ua.alevel.commons.form;
 
-import ua.com.alevel.service.ReverseStringService;
+import ua.alevel.commons.service.ReverseStringService;
 
 public class ReverseStringForm extends javax.swing.JFrame {
 
