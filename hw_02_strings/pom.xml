@@ -34,11 +34,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>ua.alevel.commons</groupId>
-            <artifactId>common_ui</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
             <groupId>com.intellij</groupId>
             <artifactId>forms_rt</artifactId>
             <version>7.0.3</version>
@@ -47,7 +42,7 @@
 
 
     <build>
-        <finalName>hw_01_base_operations</finalName>
+        <finalName>hw_02_strings</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -74,7 +69,7 @@
                             <goal>single</goal>
                         </goals>
                         <configuration>
-                            <finalName>hw_01_base_operations</finalName>
+                            <finalName>hw_02_strings</finalName>
                             <appendAssemblyId>false</appendAssemblyId>
                             <archive>
                                 <manifest>

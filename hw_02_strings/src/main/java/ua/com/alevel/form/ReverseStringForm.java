@@ -1,15 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package ua.com.alevel.form;
 
 import ua.com.alevel.service.ReverseStringService;
 
-/**
- *
- * @author pozna
- */
 public class ReverseStringForm extends javax.swing.JFrame {
 
     private final ReverseStringService reverseStringService;
@@ -76,71 +68,71 @@ public class ReverseStringForm extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(228, 228, 228)
-                        .addComponent(wellcomeLabel))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(charSequenceInputField, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(allStringReversedCheckBox)
-                            .addComponent(resultLabel)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(indexRadioButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(indexLabel))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(charSequenceRadioButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(reverseByCharSequenceLabel))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(textInputField, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(41, 41, 41)
-                                .addComponent(getResultBtn))
-                            .addComponent(stringEnteredLabel)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(justReverseRadioButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(justReverseLabel))
-                            .addComponent(resultLabel1))))
-                .addContainerGap(18, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGap(228, 228, 228)
+                                                .addComponent(wellcomeLabel))
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGap(26, 26, 26)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(charSequenceInputField, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(allStringReversedCheckBox)
+                                                        .addComponent(resultLabel)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addComponent(indexRadioButton)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(indexLabel))
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addComponent(charSequenceRadioButton)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(reverseByCharSequenceLabel))
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addComponent(textInputField, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addGap(41, 41, 41)
+                                                                .addComponent(getResultBtn))
+                                                        .addComponent(stringEnteredLabel)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addComponent(justReverseRadioButton)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                                .addComponent(justReverseLabel))
+                                                        .addComponent(resultLabel1))))
+                                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(wellcomeLabel)
-                .addGap(26, 26, 26)
-                .addComponent(allStringReversedCheckBox)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(justReverseRadioButton)
-                    .addComponent(justReverseLabel))
-                .addGap(11, 11, 11)
-                .addComponent(resultLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(charSequenceRadioButton)
-                    .addComponent(reverseByCharSequenceLabel))
-                .addGap(13, 13, 13)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(indexRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(charSequenceInputField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(indexLabel))
-                .addGap(17, 17, 17)
-                .addComponent(stringEnteredLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textInputField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(getResultBtn))
-                .addGap(18, 18, 18)
-                .addComponent(resultLabel1)
-                .addContainerGap(37, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(wellcomeLabel)
+                                .addGap(26, 26, 26)
+                                .addComponent(allStringReversedCheckBox)
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(justReverseRadioButton)
+                                        .addComponent(justReverseLabel))
+                                .addGap(11, 11, 11)
+                                .addComponent(resultLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(charSequenceRadioButton)
+                                        .addComponent(reverseByCharSequenceLabel))
+                                .addGap(13, 13, 13)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addComponent(indexRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(charSequenceInputField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(indexLabel))
+                                .addGap(17, 17, 17)
+                                .addComponent(stringEnteredLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(textInputField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(getResultBtn))
+                                .addGap(18, 18, 18)
+                                .addComponent(resultLabel1)
+                                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
@@ -149,12 +141,16 @@ public class ReverseStringForm extends javax.swing.JFrame {
     private void getResultBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getResultBtnActionPerformed
         String result = "";
         if (charSequenceRadioButton.isSelected()) {
-
+            result = this.reverseStringService.reverse(textInputField.getText(), charSequenceInputField.getText());
         } else if (indexRadioButton.isSelected()) {
             String[] indexes = charSequenceInputField.getText().split(",");
-            Integer firstIndex = Integer.valueOf(indexes[0]);
-            Integer lastIndex = Integer.valueOf(indexes[1]);
-            result = this.reverseStringService.reverse(textInputField.getText(), firstIndex, lastIndex, !allStringReversedCheckBox.isSelected());
+            if (indexes.length != 2) {
+                result = "Invalid range!";
+            } else {
+                int firstIndex = Integer.parseInt(indexes[0].trim());
+                int lastIndex = Integer.parseInt(indexes[1].trim());
+                result = this.reverseStringService.reverse(textInputField.getText(), firstIndex, lastIndex, !allStringReversedCheckBox.isSelected());
+            }
         } else {
             result = this.reverseStringService.reverse(textInputField.getText(), !allStringReversedCheckBox.isSelected());
         }
