@@ -1,35 +1,31 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package ua.com.alevel.controller;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 import ua.com.alevel.entity.BankClient;
 import ua.com.alevel.service.BankClientService;
 
-/**
- *
- * @author pozna
- */
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.UUID;
+
 public class BankClientControllerForm extends javax.swing.JFrame {
 
     private final BankClientService<BankClient> bankClientService;
-    private Map<Integer, UUID> rowNumberWithUuid;
+    private Map<Integer, UUID> rowTableNumberWithEntityUuid;
+    private javax.swing.JLabel addressLabel;
+    private javax.swing.JTextField addressTextField;
+    private javax.swing.JTable clientTable;
+    private javax.swing.JLabel clientTypeLabel;
+    private javax.swing.JTextField clientTypeTextField;
+    private javax.swing.JButton deleteButton;
+    private javax.swing.JLabel fullNameLabel;
+    private javax.swing.JTextField fullNameTextField;
+    private javax.swing.JButton insertButton;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton resetButton;
+    private javax.swing.JButton updateButton;
 
-    /**
-     * Creates new form BankClientControllerForm
-     */
     public BankClientControllerForm(BankClientService<BankClient> bankClientService) {
         this.bankClientService = bankClientService;
         initComponents();
@@ -61,26 +57,26 @@ public class BankClientControllerForm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         clientTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+                new Object[][]{
 
-            },
-            new String [] {
-                "Full name", "Client type", "Adress"
-            }
+                },
+                new String[]{
+                        "Full name", "Client type", "Adress"
+                }
         ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            Class[] types = new Class[]{
+                    java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
-            boolean[] canEdit = new boolean [] {
-                false, false, false
+            boolean[] canEdit = new boolean[]{
+                    false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
+                return types[columnIndex];
             }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+                return canEdit[columnIndex];
             }
         });
         clientTable.getTableHeader().setReorderingAllowed(false);
@@ -128,77 +124,76 @@ public class BankClientControllerForm extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(clientTypeLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(clientTypeTextField))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(addressLabel)
-                        .addGap(18, 18, 18)
-                        .addComponent(addressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(fullNameLabel)
-                        .addGap(11, 11, 11)
-                        .addComponent(fullNameTextField))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(insertButton)
-                            .addComponent(resetButton))
-                        .addGap(58, 58, 58)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(updateButton, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(deleteButton, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 427, Short.MAX_VALUE)
-                .addContainerGap())
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addComponent(clientTypeLabel)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(clientTypeTextField))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                .addComponent(addressLabel)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(addressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addComponent(fullNameLabel)
+                                                .addGap(11, 11, 11)
+                                                .addComponent(fullNameTextField))
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGap(10, 10, 10)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addComponent(insertButton)
+                                                        .addComponent(resetButton))
+                                                .addGap(58, 58, 58)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(updateButton, javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addComponent(deleteButton, javax.swing.GroupLayout.Alignment.TRAILING))
+                                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 427, Short.MAX_VALUE)
+                                .addContainerGap())
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fullNameLabel)
-                    .addComponent(fullNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(clientTypeLabel)
-                    .addComponent(clientTypeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addressLabel)
-                    .addComponent(addressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(insertButton)
-                    .addComponent(updateButton))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(resetButton)
-                    .addComponent(deleteButton))
-                .addGap(19, 19, 19))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(fullNameLabel)
+                                        .addComponent(fullNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(38, 38, 38)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(clientTypeLabel)
+                                        .addComponent(clientTypeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(38, 38, 38)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(addressLabel)
+                                        .addComponent(addressTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(insertButton)
+                                        .addComponent(updateButton))
+                                .addGap(26, 26, 26)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(resetButton)
+                                        .addComponent(deleteButton))
+                                .addGap(19, 19, 19))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void clientTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clientTableMouseClicked
+    private void clientTableMouseClicked(java.awt.event.MouseEvent evt) {
         int i = clientTable.getSelectedRow();
-        TableModel model = clientTable.getModel(); 
+        TableModel model = clientTable.getModel();
         fullNameTextField.setText(model.getValueAt(i, 1).toString());
         clientTypeTextField.setText(model.getValueAt(i, 2).toString());
         addressTextField.setText(model.getValueAt(i, 3).toString());
+    }
 
-    }//GEN-LAST:event_clientTableMouseClicked
-
-    private void insertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertButtonActionPerformed
+    private void insertButtonActionPerformed(java.awt.event.ActionEvent evt) {
         BankClient client = new BankClient();
         client.setUuid(UUID.randomUUID());
         client.setFullName(fullNameTextField.getText());
@@ -208,17 +203,17 @@ public class BankClientControllerForm extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) clientTable.getModel();
         model.setRowCount(0);
         showBankClient();
-    }//GEN-LAST:event_insertButtonActionPerformed
+    }
 
-    private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
+    private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {
         fullNameTextField.setText("");
         clientTypeTextField.setText("");
         addressTextField.setText("");
-    }//GEN-LAST:event_resetButtonActionPerformed
+    }
 
-    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {
         int row = clientTable.getSelectedRow();
-        UUID clientUuid = rowNumberWithUuid.get(row);
+        UUID clientUuid = rowTableNumberWithEntityUuid.get(row);
         BankClient client = bankClientService.findByUuid(clientUuid);
         client.setFullName(fullNameTextField.getText());
         client.setClientType(clientTypeTextField.getText());
@@ -227,42 +222,27 @@ public class BankClientControllerForm extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) clientTable.getModel();
         model.setRowCount(0);
         showBankClient();
-    }//GEN-LAST:event_updateButtonActionPerformed
+    }
 
-    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {
         int row = clientTable.getSelectedRow();
-        UUID clientUuid = rowNumberWithUuid.get(row);
+        UUID clientUuid = rowTableNumberWithEntityUuid.get(row);
         bankClientService.delete(clientUuid);
         DefaultTableModel model = (DefaultTableModel) clientTable.getModel();
         model.setRowCount(0);
         showBankClient();
-    }//GEN-LAST:event_deleteButtonActionPerformed
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel addressLabel;
-    private javax.swing.JTextField addressTextField;
-    private javax.swing.JTable clientTable;
-    private javax.swing.JLabel clientTypeLabel;
-    private javax.swing.JTextField clientTypeTextField;
-    private javax.swing.JButton deleteButton;
-    private javax.swing.JLabel fullNameLabel;
-    private javax.swing.JTextField fullNameTextField;
-    private javax.swing.JButton insertButton;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton resetButton;
-    private javax.swing.JButton updateButton;
-    // End of variables declaration//GEN-END:variables
+    }
 
     public void showBankClient() {
         BankClient[] clients = bankClientService.findAll();
         DefaultTableModel model = (DefaultTableModel) clientTable.getModel();
         Object[] row = new Object[3];
-        rowNumberWithUuid = new LinkedHashMap();
+        rowTableNumberWithEntityUuid = new LinkedHashMap<>();
         for (int i = 0; i < clients.length; i++) {
             row[0] = clients[i].getFullName();
             row[1] = clients[i].getClientType();
             row[2] = clients[i].getAddress();
-            rowNumberWithUuid.put(i, clients[i].getUuid());
+            rowTableNumberWithEntityUuid.put(i, clients[i].getUuid());
             model.addRow(row);
         }
     }

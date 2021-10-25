@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.UUID;
 
 public final class InMemoryDataBase {
+
     private BankClient[] clients;
     private int size;
     private final static int DEFAULT_SIZE = 0;

@@ -3,6 +3,7 @@ package ua.com.alevel.entity;
 import java.util.UUID;
 
 public class BankClient {
+
     private UUID uuid;
     private String clientType;
     private String fullName;
