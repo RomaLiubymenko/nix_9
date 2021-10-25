@@ -8,7 +8,7 @@ import java.util.UUID;
 public final class InMemoryDataBase {
     private BankClient[] clients;
     private int size;
-    private final static int DEFAULT_SIZE = 10;
+    private final static int DEFAULT_SIZE = 0;
     private int arraySize = DEFAULT_SIZE;
     private static InMemoryDataBase instance;
 
