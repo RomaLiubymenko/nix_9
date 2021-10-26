@@ -17,7 +17,7 @@ public class Main {
             java.util.logging.Logger.getLogger(BankClientControllerForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         java.awt.EventQueue.invokeLater(() -> {
-            new BankClientControllerForm(new BankClientServiceImpl()).setVisible(true);
+            new BankClientControllerForm(new BankClientServiceImpl(), "hw_03_start_oop").setVisible(true);
         });
     }
 }

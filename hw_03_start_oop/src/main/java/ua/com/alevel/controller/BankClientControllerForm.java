@@ -3,11 +3,13 @@ package ua.com.alevel.controller;
 import ua.com.alevel.entity.BankClient;
 import ua.com.alevel.service.BankClientService;
 
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.UUID;
+import java.util.stream.Stream;
 
 public class BankClientControllerForm extends javax.swing.JFrame {
 
@@ -26,10 +28,11 @@ public class BankClientControllerForm extends javax.swing.JFrame {
     private javax.swing.JButton resetButton;
     private javax.swing.JButton updateButton;
 
-    public BankClientControllerForm(BankClientService<BankClient> bankClientService) {
+    public BankClientControllerForm(BankClientService<BankClient> bankClientService, String title) {
+        super(title);
         this.bankClientService = bankClientService;
         initComponents();
-        showBankClient();
+        showBankClients();
     }
 
     /**
@@ -188,21 +191,26 @@ public class BankClientControllerForm extends javax.swing.JFrame {
     private void clientTableMouseClicked(java.awt.event.MouseEvent evt) {
         int i = clientTable.getSelectedRow();
         TableModel model = clientTable.getModel();
-        fullNameTextField.setText(model.getValueAt(i, 1).toString());
-        clientTypeTextField.setText(model.getValueAt(i, 2).toString());
-        addressTextField.setText(model.getValueAt(i, 3).toString());
+        fullNameTextField.setText(model.getValueAt(i, 0).toString());
+        clientTypeTextField.setText(model.getValueAt(i, 1).toString());
+        addressTextField.setText(model.getValueAt(i, 2).toString());
     }
 
     private void insertButtonActionPerformed(java.awt.event.ActionEvent evt) {
         BankClient client = new BankClient();
         client.setUuid(UUID.randomUUID());
-        client.setFullName(fullNameTextField.getText());
-        client.setClientType(clientTypeTextField.getText());
-        client.setAddress(addressTextField.getText());
-        bankClientService.create(client);
-        DefaultTableModel model = (DefaultTableModel) clientTable.getModel();
-        model.setRowCount(0);
-        showBankClient();
+        if (checkExistingFields()) {
+            client.setFullName(fullNameTextField.getText());
+            client.setClientType(clientTypeTextField.getText());
+            client.setAddress(addressTextField.getText());
+            bankClientService.create(client);
+            DefaultTableModel model = (DefaultTableModel) clientTable.getModel();
+            model.setRowCount(0);
+            showBankClients();
+        } else {
+            JOptionPane.showMessageDialog(null, "Input data is incomplete or not valid");
+        }
+
     }
 
     private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -213,15 +221,22 @@ public class BankClientControllerForm extends javax.swing.JFrame {
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {
         int row = clientTable.getSelectedRow();
-        UUID clientUuid = rowTableNumberWithEntityUuid.get(row);
-        BankClient client = bankClientService.findByUuid(clientUuid);
-        client.setFullName(fullNameTextField.getText());
-        client.setClientType(clientTypeTextField.getText());
-        client.setAddress(addressTextField.getText());
-        bankClientService.update(client);
-        DefaultTableModel model = (DefaultTableModel) clientTable.getModel();
-        model.setRowCount(0);
-        showBankClient();
+        if (row == -1) {
+            JOptionPane.showMessageDialog(null, "Select a row from the table to perform the update");
+        } else if (checkExistingFields()) {
+            UUID clientUuid = rowTableNumberWithEntityUuid.get(row);
+            BankClient client = bankClientService.findByUuid(clientUuid);
+            client.setFullName(fullNameTextField.getText());
+            client.setClientType(clientTypeTextField.getText());
+            client.setAddress(addressTextField.getText());
+            bankClientService.update(client);
+            DefaultTableModel model = (DefaultTableModel) clientTable.getModel();
+            model.setRowCount(0);
+            showBankClients();
+        } else {
+            JOptionPane.showMessageDialog(null, "Input data is incomplete or not valid");
+        }
+
     }
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -230,10 +245,10 @@ public class BankClientControllerForm extends javax.swing.JFrame {
         bankClientService.delete(clientUuid);
         DefaultTableModel model = (DefaultTableModel) clientTable.getModel();
         model.setRowCount(0);
-        showBankClient();
+        showBankClients();
     }
 
-    public void showBankClient() {
+    private void showBankClients() {
         BankClient[] clients = bankClientService.findAll();
         DefaultTableModel model = (DefaultTableModel) clientTable.getModel();
         Object[] row = new Object[3];
@@ -245,5 +260,13 @@ public class BankClientControllerForm extends javax.swing.JFrame {
             rowTableNumberWithEntityUuid.put(i, clients[i].getUuid());
             model.addRow(row);
         }
+    }
+
+    private boolean checkExistingFields() {
+        return Stream.of(
+                fullNameTextField.getText(),
+                clientTypeTextField.getText(),
+                addressTextField.getText()
+        ).noneMatch(String::isBlank);
     }
 }

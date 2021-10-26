@@ -3,18 +3,20 @@ package ua.com.alevel.db;
 import ua.com.alevel.entity.BankClient;
 
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.UUID;
 
 public final class InMemoryDataBase {
 
     private BankClient[] clients;
     private int size;
-    private final static int DEFAULT_SIZE = 0;
-    private int arraySize = DEFAULT_SIZE;
+    private final static int DEFAULT_SIZE = 10;
+    private int arraySize;
     private static InMemoryDataBase instance;
 
     private InMemoryDataBase() {
         clients = new BankClient[DEFAULT_SIZE];
+        this.arraySize = DEFAULT_SIZE;
     }
 
     public static InMemoryDataBase getInstance() {
@@ -32,13 +34,16 @@ public final class InMemoryDataBase {
 
     public BankClient findByUuid(UUID uuid) {
         return Arrays.stream(clients)
+                .filter(Objects::nonNull)
                 .filter(client -> client.getUuid() == uuid)
                 .findFirst()
                 .orElseThrow();
     }
 
     public BankClient[] findAll() {
-        return clients;
+        return  Arrays.stream(clients)
+                .filter(Objects::nonNull)
+                .toArray(BankClient[]::new);
     }
 
     public void update(BankClient client) {
