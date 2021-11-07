@@ -1,8 +1,8 @@
-package dao.impl;
+package ua.com.alevel.dao.impl;
 
-import dao.OwnerDao;
-import db.OwnerInMemoryDataBase;
-import entity.Owner;
+import ua.com.alevel.dao.OwnerDao;
+import ua.com.alevel.db.OwnerInMemoryDataBase;
+import ua.com.alevel.entity.Owner;
 
 import java.util.UUID;
 

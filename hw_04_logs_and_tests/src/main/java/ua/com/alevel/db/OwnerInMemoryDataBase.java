@@ -1,6 +1,6 @@
-package db;
+package ua.com.alevel.db;
 
-import entity.Owner;
+import ua.com.alevel.entity.Owner;
 
 import java.util.Arrays;
 import java.util.Objects;

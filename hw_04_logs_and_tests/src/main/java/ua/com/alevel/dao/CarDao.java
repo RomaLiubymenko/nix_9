@@ -1,6 +1,6 @@
-package dao;
+package ua.com.alevel.dao;
 
-import entity.Car;
+import ua.com.alevel.entity.Car;
 
 import java.util.UUID;
 

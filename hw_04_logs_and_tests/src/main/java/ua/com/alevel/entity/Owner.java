@@ -1,4 +1,4 @@
-package entity;
+package ua.com.alevel.entity;
 
 import java.util.Objects;
 import java.util.UUID;

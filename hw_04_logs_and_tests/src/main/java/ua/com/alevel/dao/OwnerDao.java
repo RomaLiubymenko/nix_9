@@ -1,10 +1,10 @@
-package service;
+package ua.com.alevel.dao;
 
-import entity.Owner;
+import ua.com.alevel.entity.Owner;
 
 import java.util.UUID;
 
-public interface OwnerService {
+public interface OwnerDao {
 
     void create(Owner entity);
 

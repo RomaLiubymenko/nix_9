@@ -1,8 +1,8 @@
-package dao.impl;
+package ua.com.alevel.dao.impl;
 
-import dao.CarDao;
-import db.CarInMemoryDataBase;
-import entity.Car;
+import ua.com.alevel.dao.CarDao;
+import ua.com.alevel.db.CarInMemoryDataBase;
+import ua.com.alevel.entity.Car;
 
 import java.util.UUID;
 

@@ -1,7 +1,8 @@
+package ua.com.alevel;
 
-import controller.MainControllerForm;
-import service.impl.CarServiceImpl;
-import service.impl.OwnerServiceImpl;
+import ua.com.alevel.controller.MainControllerForm;
+import ua.com.alevel.service.impl.CarServiceImpl;
+import ua.com.alevel.service.impl.OwnerServiceImpl;
 
 public class Main {
 

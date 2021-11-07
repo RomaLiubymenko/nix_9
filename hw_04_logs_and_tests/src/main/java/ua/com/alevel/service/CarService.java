@@ -1,6 +1,6 @@
-package service;
+package ua.com.alevel.service;
 
-import entity.Car;
+import ua.com.alevel.entity.Car;
 
 import java.util.UUID;
 

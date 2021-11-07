@@ -1,9 +1,9 @@
-package service.impl;
+package ua.com.alevel.service.impl;
 
-import dao.OwnerDao;
-import dao.impl.OwnerDaoImpl;
-import entity.Owner;
-import service.OwnerService;
+import ua.com.alevel.dao.OwnerDao;
+import ua.com.alevel.dao.impl.OwnerDaoImpl;
+import ua.com.alevel.entity.Owner;
+import ua.com.alevel.service.OwnerService;
 
 import java.util.UUID;
 

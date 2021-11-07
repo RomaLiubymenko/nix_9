@@ -1,9 +1,9 @@
-package service.impl;
+package ua.com.alevel.service.impl;
 
-import dao.CarDao;
-import dao.impl.CarDaoImpl;
-import entity.Car;
-import service.CarService;
+import ua.com.alevel.dao.CarDao;
+import ua.com.alevel.dao.impl.CarDaoImpl;
+import ua.com.alevel.entity.Car;
+import ua.com.alevel.service.CarService;
 
 import java.util.UUID;
 

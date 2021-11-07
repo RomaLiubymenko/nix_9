@@ -1,6 +1,6 @@
-package db;
+package ua.com.alevel.db;
 
-import entity.Car;
+import ua.com.alevel.entity.Car;
 
 import java.util.Arrays;
 import java.util.Objects;
