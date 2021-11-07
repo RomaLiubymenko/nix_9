@@ -52,6 +52,7 @@ public final class CarInMemoryDataBase {
         result.setBrand(car.getBrand());
         result.setModel(car.getModel());
         result.setYear(car.getYear());
+        result.setOwner(car.getOwner());
     }
 
     public void delete(UUID uuid) {

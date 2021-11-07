@@ -10,6 +10,7 @@ public class Car {
     private String brand;
     private String model;
     private LocalDate year;
+    private Owner owner;
 
     public UUID getUuid() {
         return uuid;
@@ -43,6 +44,14 @@ public class Car {
         this.year = year;
     }
 
+    public Owner getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Owner owner) {
+        this.owner = owner;
+    }
+   
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -58,11 +67,6 @@ public class Car {
 
     @Override
     public String toString() {
-        return "Car{" +
-                "uuid=" + uuid +
-                ", brand='" + brand + '\'' +
-                ", model='" + model + '\'' +
-                ", year=" + year +
-                '}';
+        return "Car{" + "uuid=" + uuid + ", brand=" + brand + ", model=" + model + ", year=" + year + ", owner=" + owner + '}';
     }
 }
