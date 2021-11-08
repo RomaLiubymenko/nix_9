@@ -401,6 +401,7 @@ public class MainControllerForm extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Something went wrong");
         }
+        ownerFullNameComboBox.setSelectedItem(model.getValueAt(i, 3).toString());
     }
 
     private void insertCarButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -408,7 +409,7 @@ public class MainControllerForm extends javax.swing.JFrame {
         car.setUuid(UUID.randomUUID());
         if (checkExistingCarFields() && ownerFullNameComboBox.getSelectedItem() != null) {
             String selectedFullName = (String) ownerFullNameComboBox.getSelectedItem();
-            car.setOwner(getOwnerByFullName(selectedFullName));
+            car.setOwnerUuid(getOwnerUuidByFullName(selectedFullName));
             car.setBrand(brandTextField.getText());
             car.setModel(modelTextField.getText());
             car.setYear(LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(dateChooser.getDate())));
@@ -471,9 +472,12 @@ public class MainControllerForm extends javax.swing.JFrame {
                     owner.setPhoneNumber(phoneNumberTextField.getText());
                     owner.setAddress(addressTextField.getText());
                     ownerService.update(owner);
-                    DefaultTableModel model = (DefaultTableModel) ownerTable.getModel();
-                    model.setRowCount(0);
+                    DefaultTableModel ownerModel = (DefaultTableModel) ownerTable.getModel();
+                    DefaultTableModel carModel = (DefaultTableModel) carTable.getModel();
+                    ownerModel.setRowCount(0);
+                    carModel.setRowCount(0);
                     showOwners();
+                    showCars();
                 } else {
                     JOptionPane.showMessageDialog(null, "Input data is incomplete or not valid");
                 }
@@ -491,7 +495,7 @@ public class MainControllerForm extends javax.swing.JFrame {
             UUID carUuid = rowNumberWithCarUuid.get(row);
             Car car = carService.findByUuid(carUuid);
             String selectedFullName = (String) ownerFullNameComboBox.getSelectedItem();
-            car.setOwner(getOwnerByFullName(selectedFullName));
+            car.setOwnerUuid(getOwnerUuidByFullName(selectedFullName));
             car.setBrand(brandTextField.getText());
             car.setModel(modelTextField.getText());
             car.setYear(LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(dateChooser.getDate())));
@@ -519,14 +523,20 @@ public class MainControllerForm extends javax.swing.JFrame {
 
     private void deleteOwnerButtonActionPerformed(java.awt.event.ActionEvent evt) {
         int row = ownerTable.getSelectedRow();
-        if (row == -1) {
-            JOptionPane.showMessageDialog(null, "Select a row from the table to perform the delete");
-        } else {
-            UUID ownerUuid = rowNumberWithOwnerUuid.get(row);
-            ownerService.delete(ownerUuid);
-            DefaultTableModel model = (DefaultTableModel) ownerTable.getModel();
-            model.setRowCount(0);
-            showOwners();
+        int isConfirmed = JOptionPane.showConfirmDialog(null, "Warning! When the owner is deleted, his cars will also be deleted");
+        if (isConfirmed == 0) {
+            if (row == -1) {
+                JOptionPane.showMessageDialog(null, "Select a row from the table to perform the delete");
+            } else {
+                UUID ownerUuid = rowNumberWithOwnerUuid.get(row);
+                ownerService.delete(ownerUuid);
+                DefaultTableModel ownerModel = (DefaultTableModel) ownerTable.getModel();
+                DefaultTableModel carModel = (DefaultTableModel) carTable.getModel();
+                ownerModel.setRowCount(0);
+                carModel.setRowCount(0);
+                showOwners();
+                showCars();
+            }
         }
     }
 
@@ -564,7 +574,7 @@ public class MainControllerForm extends javax.swing.JFrame {
             row[0] = cars[i].getBrand();
             row[1] = cars[i].getModel();
             row[2] = cars[i].getYear().toString();
-            row[3] = cars[i].getOwner().getFullName();
+            row[3] = ownerService.findByUuid(cars[i].getOwnerUuid()).getFullName();
             rowNumberWithCarUuid.put(i, cars[i].getUuid());
             model.addRow(row);
         }
@@ -588,10 +598,11 @@ public class MainControllerForm extends javax.swing.JFrame {
         ).noneMatch(String::isBlank);
     }
 
-    private Owner getOwnerByFullName(String fullName) {
+    private UUID getOwnerUuidByFullName(String fullName) {
         Owner[] owners = ownerService.findAll();
         return Arrays.stream(owners)
                 .filter(owner -> owner.getFullName().equals(fullName))
+                .map(Owner::getUuid)
                 .findFirst()
                 .get();
     }
