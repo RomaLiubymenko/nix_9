@@ -19,13 +19,14 @@
         <maven.shade.plugin.version>3.2.0</maven.shade.plugin.version>
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
         <org.junit.jupiter.version>5.8.1</org.junit.jupiter.version>
+       <com.toedter.jcalendar>1.4</com.toedter.jcalendar>
     </properties>
     
     <dependencies>
         <dependency>
             <groupId>com.toedter</groupId>
             <artifactId>jcalendar</artifactId>
-            <version>1.4</version>
+            <version>${com.toedter.jcalendar}</version>
         </dependency>
          <dependency>
             <groupId>org.junit.jupiter</groupId>
