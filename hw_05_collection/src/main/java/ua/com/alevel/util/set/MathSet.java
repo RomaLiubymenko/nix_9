@@ -265,7 +265,7 @@ public class MathSet<N extends Number & Comparable<N>> implements MathCollection
 
     @Override
     public String toString() {
-        return "MathSet{" + Arrays.toString(Arrays.copyOfRange(numbers, 0, size)) + "}";
+        return "MathSet{ " + Arrays.toString(Arrays.copyOfRange(numbers, 0, size)) + " }";
     }
 
     // helper methods

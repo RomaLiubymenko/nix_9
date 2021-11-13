@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="clearLabel" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="getLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="inputMathSetLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="inputMathSetTextField" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="resultTextLabel" min="-2" pref="54" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="resultLabel" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="addLabel" alignment="0" min="-2" pref="396" max="-2" attributes="0"/>
+                          <Component id="addTextField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="joinLabel" min="-2" pref="393" max="-2" attributes="0"/>
+                          <Component id="joinTextField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="intersectionLabel" min="-2" pref="467" max="-2" attributes="0"/>
+                          <Component id="intersectionTextField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="sortAscLabel" max="32767" attributes="0"/>
+                          <Component id="sortAscTextField" max="32767" attributes="0"/>
+                          <Component id="sortDescLabel" pref="562" max="32767" attributes="0"/>
+                          <Component id="sortDescTextField" max="32767" attributes="0"/>
+                          <Component id="getTextField" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="getButton" min="-2" pref="90" max="-2" attributes="0"/>
+                          <Component id="sortDescButton" min="-2" pref="91" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="intersectionButton" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="sortAscButton" alignment="1" min="-2" pref="91" max="-2" attributes="0"/>
+                              <Component id="joinButton" alignment="1" min="-2" pref="91" max="-2" attributes="0"/>
+                              <Component id="addButton" alignment="1" min="-2" pref="91" max="-2" attributes="0"/>
+                              <Component id="createMathSetButton" alignment="1" min="-2" pref="91" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="getMaxButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                              <Component id="getMinButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                              <Component id="getAverageButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                              <Component id="getMedianButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="210" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="clearTextField" min="-2" pref="561" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="clearButton" min="-2" pref="93" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace min="29" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <Component id="inputMathSetLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="inputMathSetTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="createMathSetButton" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="addLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="addTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="addButton" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="joinLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="joinTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="joinButton" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="intersectionLabel" min="-2" pref="14" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="intersectionTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="intersectionButton" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="sortAscLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="sortAscTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="sortAscButton" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="sortDescLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="sortDescTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="sortDescButton" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="getLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="getTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="getButton" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="clearLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="clearTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="clearButton" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="getMaxButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="getMinButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="getAverageButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="getMedianButton" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="38" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="resultTextLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="resultLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="resultTextLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Result:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="resultLabel">
+    </Component>
+    <Component class="javax.swing.JTextField" name="inputMathSetTextField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="inputMathSetLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Please enter a sequence of numbers separated by a space for creating math set. Example &quot;5 6 7 6&quot;"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="addLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Please enter a sequence of numbers separated by a space for add in math set"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="addTextField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="joinLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Please enter a sequence of numbers separated by a space for join with math set"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="joinTextField">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="joinTextFieldActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="intersectionLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Please enter a sequence of numbers separated by a space for intersection with math set"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="intersectionTextField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="sortAscLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt;To sort numbers in ascending order, please enter 2 indices separated by a space. Example &quot;0 5&quot;.&lt;br&gt;Or 1 number from which the sorting will be performed. To sort all numbers, just click on the &quot;sort ascending&quot; button"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="sortAscTextField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="sortDescLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&lt;html&gt;To sort numbers in descending order, please enter 2 indices separated by a space. Example &quot;0 5&quot;.&lt;br&gt;Or 1 number from which the sorting will be performed. To sort all numbers, just click on the &quot;sort descending&quot; button"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="sortDescTextField">
+    </Component>
+    <Component class="javax.swing.JLabel" name="getLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Please enter an index to get the number"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="getTextField">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="getTextFieldActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="clearLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Please enter the numbers separated by spaces that you want to remove from the array. Or just click on the &quot;clear&quot; button"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="clearTextField">
+    </Component>
+    <Component class="javax.swing.JButton" name="getMaxButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Max"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="getMaxButtonActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="getMinButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Min"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="getMinButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="getAverageButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Average"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="getAverageButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="getMedianButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Median"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="getMedianButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="createMathSetButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Create"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createMathSetButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="addButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Add"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="joinButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Join"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="joinButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="intersectionButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Intersection"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="intersectionButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="sortAscButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Sort asc"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sortAscButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="sortDescButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Sort desc"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sortDescButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="getButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Get"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="getButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="clearButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Clear"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="clearButtonActionPerformed"/>
+      </Events>
+    </Component>
+  </SubComponents>
+</Form>
