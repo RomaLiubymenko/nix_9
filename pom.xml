@@ -31,6 +31,7 @@
         <module>hw_03_start_oop</module>
         <module>hw_04_logs_and_tests</module>
         <module>hw_05_collection</module>
+        <module>hw_06_calendar</module>
     </modules>
 
     <properties>
