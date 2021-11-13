@@ -25,6 +25,11 @@
             <artifactId>commons-lang3</artifactId>
             <version>${org.apache.commons.version}</version>
         </dependency>
+        <dependency>
+            <groupId>ua.alevel.commons</groupId>
+            <artifactId>math_collection</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <build>

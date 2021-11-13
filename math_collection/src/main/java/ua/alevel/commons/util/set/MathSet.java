@@ -1,7 +1,7 @@
-package ua.com.alevel.util.set;
+package ua.alevel.commons.util.set;
 
-import ua.com.alevel.util.MathCollection;
-import ua.com.alevel.util.sort.MathCollectionUtils;
+import ua.alevel.commons.util.MathCollection;
+import ua.alevel.commons.util.sort.MathCollectionUtils;
 
 import java.util.Arrays;
 import java.util.Objects;

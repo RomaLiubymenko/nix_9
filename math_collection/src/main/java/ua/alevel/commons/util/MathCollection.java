@@ -1,4 +1,4 @@
-package ua.com.alevel.util;
+package ua.alevel.commons.util;
 
 public interface MathCollection<N extends Number> {
 

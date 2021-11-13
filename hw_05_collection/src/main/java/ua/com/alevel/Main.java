@@ -1,7 +1,7 @@
 package ua.com.alevel;
 
 import org.apache.commons.lang3.StringUtils;
-import ua.com.alevel.util.set.MathSet;
+import ua.alevel.commons.util.set.MathSet;
 
 import javax.swing.*;
 import java.text.NumberFormat;

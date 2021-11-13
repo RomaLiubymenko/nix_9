@@ -1,4 +1,4 @@
-package ua.com.alevel.util.sort;
+package ua.alevel.commons.util.sort;
 
 public class MathCollectionUtils {
 
