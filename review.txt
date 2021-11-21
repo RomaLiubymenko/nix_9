@@ -8,3 +8,6 @@ hw_2 = 10 Bravo!!!
 hw_3 = 10 Bravo!!!
 
 module_1 = 8
+
+hw_4 = 10
+hw_5 = 10
