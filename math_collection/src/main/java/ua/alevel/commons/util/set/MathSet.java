@@ -1,5 +1,6 @@
 package ua.alevel.commons.util.set;
 
+import org.apache.commons.lang3.ArrayUtils;
 import ua.alevel.commons.util.MathCollection;
 import ua.alevel.commons.util.sort.MathCollectionUtils;
 
@@ -106,7 +107,8 @@ public class MathSet<N extends Number & Comparable<N>> implements MathCollection
     @Override
     public void sortDesc() {
         N[] array = this.toArray();
-        MathCollectionUtils.heapSort(array, false);
+        MathCollectionUtils.heapSort(array);
+        ArrayUtils.reverse(array);
         clear();
         addToNumbers(array);
     }
@@ -114,7 +116,8 @@ public class MathSet<N extends Number & Comparable<N>> implements MathCollection
     @Override
     public void sortDesc(int firstIndex, int lastIndex) {
         N[] array = this.toArray(firstIndex, lastIndex);
-        MathCollectionUtils.heapSort(array, false);
+        MathCollectionUtils.heapSort(array);
+        ArrayUtils.reverse(array);
         for (int index = firstIndex, arrayIndex = 0; index <= lastIndex; index++, arrayIndex++) {
             set(array[arrayIndex], index);
         }
@@ -131,7 +134,7 @@ public class MathSet<N extends Number & Comparable<N>> implements MathCollection
     @Override
     public void sortAsc() {
         N[] array = this.toArray();
-        MathCollectionUtils.heapSort(array, true);
+        MathCollectionUtils.heapSort(array);
         clear();
         addToNumbers(array);
     }
@@ -139,7 +142,7 @@ public class MathSet<N extends Number & Comparable<N>> implements MathCollection
     @Override
     public void sortAsc(int firstIndex, int lastIndex) {
         N[] array = this.toArray(firstIndex, lastIndex);
-        MathCollectionUtils.heapSort(array, true);
+        MathCollectionUtils.heapSort(array);
         for (int index = firstIndex, arrayIndex = 0; index <= lastIndex; index++, arrayIndex++) {
             set(array[arrayIndex], index);
         }
@@ -165,14 +168,15 @@ public class MathSet<N extends Number & Comparable<N>> implements MathCollection
     @Override
     public N getMax() {
         N[] array = this.toArray();
-        MathCollectionUtils.heapSort(array, false);
+        MathCollectionUtils.heapSort(array);
+        ArrayUtils.reverse(array);
         return array[0];
     }
 
     @Override
     public N getMin() {
         N[] array = this.toArray();
-        MathCollectionUtils.heapSort(array, true);
+        MathCollectionUtils.heapSort(array);
         return array[0];
     }
 
@@ -191,7 +195,7 @@ public class MathSet<N extends Number & Comparable<N>> implements MathCollection
         Number median = -1;
         if (size > 0) {
             N[] array = this.toArray();
-            MathCollectionUtils.heapSort(array, true);
+            MathCollectionUtils.heapSort(array);
             if (size % 2 == 0) {
                 Number sumOfMiddleElements = (array[size / 2].doubleValue() + array[size / 2 - 1].doubleValue()) / 2;
                 median = sumOfMiddleElements;
