@@ -17,6 +17,14 @@ public class MathCollectionUtils {
         return randomArray;
     }
 
+    public static Integer[] generateIntegerArray(int length) {
+        Integer[] array = new Integer[length];
+        for (int i = 0; i < length; i++) {
+            array[i] = i;
+        }
+        return array;
+    }
+
     public static Map<String, Integer> binarySearch(Integer[] array, int keyToSearch) {
         int countOfIterations = 0;
         int numberOfComparisonsWithKey = 0;

@@ -50,10 +50,15 @@ public class ArrayUtils {
     }
 
     public static void testSearchMethods() {
-        Integer[] arrayWithLength100 = MathCollectionUtils.generateRandomIntegerArray(100, 1, Integer.MAX_VALUE);
-        Integer[] arrayWithLength1000 = MathCollectionUtils.generateRandomIntegerArray(1000, 1, Integer.MAX_VALUE);
-        Integer[] arrayWithLength10000 = MathCollectionUtils.generateRandomIntegerArray(10000, 1, Integer.MAX_VALUE);
-        Integer[] arrayWithLength100000 = MathCollectionUtils.generateRandomIntegerArray(100000, 1, Integer.MAX_VALUE);
+//        Integer[] arrayWithLength100 = MathCollectionUtils.generateRandomIntegerArray(100, 1, Integer.MAX_VALUE);
+//        Integer[] arrayWithLength1000 = MathCollectionUtils.generateRandomIntegerArray(1000, 1, Integer.MAX_VALUE);
+//        Integer[] arrayWithLength10000 = MathCollectionUtils.generateRandomIntegerArray(10000, 1, Integer.MAX_VALUE);
+//        Integer[] arrayWithLength100000 = MathCollectionUtils.generateRandomIntegerArray(100000, 1, Integer.MAX_VALUE);
+
+        Integer[] arrayWithLength100 = MathCollectionUtils.generateIntegerArray(100);
+        Integer[] arrayWithLength1000 = MathCollectionUtils.generateIntegerArray(1000);
+        Integer[] arrayWithLength10000 = MathCollectionUtils.generateIntegerArray(10000);
+        Integer[] arrayWithLength100000 = MathCollectionUtils.generateIntegerArray(100000);
 
         MathCollectionUtils.mergeSort(arrayWithLength100);
         MathCollectionUtils.mergeSort(arrayWithLength1000);
