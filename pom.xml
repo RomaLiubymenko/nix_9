@@ -23,6 +23,7 @@
 
     <modules>
         <module>module_1</module>
+        <module>module_2</module>
         <module>math_collection</module>
         <module>math_collection_test</module>
         <module>common_ui</module>
