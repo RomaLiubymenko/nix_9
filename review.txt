@@ -11,3 +11,6 @@ module_1 = 8
 
 hw_4 = 10
 hw_5 = 10
+
+module_2 = 9
+hw_7 = 9
