@@ -3,6 +3,11 @@ package ua.com.alevel.tree;
 import javax.swing.*;
 
 public class BinaryTree {
+
+    public int viewedNodesCounterForSearch = 0;
+    public int viewedNodesCounterForInsert = 0;
+    public int viewedNodesCounterForDelete = 0;
+
     Node rootNode = null;
 
     public Node getRoot() {
@@ -10,6 +15,7 @@ public class BinaryTree {
     }
 
     public void addNode(int content) {
+        viewedNodesCounterForInsert++;
         if (rootNode == null) {
             rootNode = new Node(content);
             return;
@@ -18,13 +24,15 @@ public class BinaryTree {
     }
 
     private Node addTo(Node node, int numberToAdd) {
-        if (numberToAdd < node.getContent()) {
+        if (numberToAdd < node.getKey()) {
+            viewedNodesCounterForInsert++;
             Node leftNode = node.getLeft();
             if (leftNode == null)
                 return node.setLeft(numberToAdd);
             else
                 return addTo(leftNode, numberToAdd);
         } else {
+            viewedNodesCounterForInsert++;
             Node rightNode = node.getRight();
             if (rightNode == null)
                 return node.setRight(numberToAdd);
@@ -36,10 +44,11 @@ public class BinaryTree {
     public Node searchNode(int numberInNode, Node node) {
         Node searchedNode = null;
         if (node != null) {
-            if (numberInNode == node.getContent()) {
+            if (numberInNode == node.getKey()) {
                 return node;
             } else {
-                if (numberInNode < node.getContent()) {
+                viewedNodesCounterForSearch++;
+                if (numberInNode < node.getKey()) {
                     Node leftNode = node.getLeft();
                     searchedNode = searchNode(numberInNode, leftNode);
                 } else {
@@ -54,15 +63,19 @@ public class BinaryTree {
     public Node deleteNode(int number, Node rootNode) {
         Node aux = searchNode(number, rootNode);
         if (aux == null)
-            JOptionPane.showMessageDialog(BinaryTreePanel.BinaryTreeFrame, "The number " + number + " was not found");
+            System.out.println("The number " + number + " was not found");
+//            JOptionPane.showMessageDialog(BinaryTreePanel.BinaryTreeFrame, "The number " + number + " was not found");
         else {
             if (rootNode == null) {
                 return rootNode;
-            } else if (number < rootNode.getContent()) {
+            } else if (number < rootNode.getKey()) {
+                viewedNodesCounterForDelete++;
                 rootNode.left = deleteNode(number, rootNode.left);
-            } else if (number > rootNode.getContent()) {
+            } else if (number > rootNode.getKey()) {
+                viewedNodesCounterForDelete++;
                 rootNode.right = deleteNode(number, rootNode.right);
             } else {
+                viewedNodesCounterForDelete+=2;
                 if (rootNode.left == null && rootNode.right == null) {
                     rootNode = null;
                 } else if (rootNode.left == null) {
@@ -75,8 +88,8 @@ public class BinaryTree {
                     temp = null;
                 } else {
                     Node temp = findMin(rootNode.right);
-                    rootNode.content = temp.content;
-                    rootNode.right = deleteNode(temp.getContent(), rootNode.right);
+                    rootNode.key = temp.key;
+                    rootNode.right = deleteNode(temp.getKey(), rootNode.right);
                 }
             }
             return rootNode;
@@ -85,8 +98,10 @@ public class BinaryTree {
     }
 
     public Node findMin(Node rootNode) {
-        while (rootNode.left != null)
+        while (rootNode.left != null) {
+            viewedNodesCounterForDelete++;
             rootNode = rootNode.left;
+        }
         return rootNode;
     }
 

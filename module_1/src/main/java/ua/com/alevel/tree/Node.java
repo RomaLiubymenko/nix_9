@@ -1,16 +1,16 @@
 package ua.com.alevel.tree;
 
-public class Node {
-    int content;
-    Node left;
-    Node right;
+public class Node implements TreeNode {
+    public int key;
+    public Node left;
+    public Node right;
 
     public Node(int c) {
-        this.content = c;
+        this.key = c;
     }
 
-    public int getContent() {
-        return content;
+    public int getKey() {
+        return key;
     }
 
     public Node getLeft() {

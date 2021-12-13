@@ -103,7 +103,7 @@ public class BinaryTreePanel extends JPanel implements ActionListener {
 
     private Dimension calculateSubtreeSize(Node node) {
         if (node == null) return new Dimension(0, 0);
-        String content = Integer.toString(node.getContent());
+        String content = Integer.toString(node.getKey());
         Dimension leftDimension = calculateSubtreeSize(node.getLeft());
         Dimension rightDimension = calculateSubtreeSize(node.getRight());
         int height = fontMetric.getHeight() + parentToChild + Math.max(leftDimension.height, rightDimension.height);
@@ -124,7 +124,7 @@ public class BinaryTreePanel extends JPanel implements ActionListener {
             center = right - rightDimension.width - childToChild / 2;
         else if (left != Integer.MAX_VALUE)
             center = left + leftDimension.width + childToChild / 2;
-        int width = fontMetric.stringWidth(Integer.toString(node.getContent()));
+        int width = fontMetric.stringWidth(Integer.toString(node.getKey()));
         Rectangle rectangle = new Rectangle(center - width / 2 - 3, top, width + 6, fontMetric.getHeight());
         nodeLocations.put(node, rectangle);
         calculateLocation(node.getLeft(), Integer.MAX_VALUE, center - childToChild / 2, top + fontMetric.getHeight() + parentToChild);
@@ -135,7 +135,7 @@ public class BinaryTreePanel extends JPanel implements ActionListener {
         if (node == null) return;
         Rectangle rectangle = nodeLocations.get(node);
         graphics2D.draw(rectangle);
-        graphics2D.drawString(Integer.toString(node.getContent()), rectangle.x + 3, rectangle.y + yoffs);
+        graphics2D.drawString(Integer.toString(node.getKey()), rectangle.x + 3, rectangle.y + yoffs);
         if (px != Integer.MAX_VALUE)
             graphics2D.drawLine(px, py, rectangle.x + rectangle.width / 2, rectangle.y);
         drawTree(graphics2D, node.getLeft(), rectangle.x + rectangle.width / 2, rectangle.y + rectangle.height, yoffs);
