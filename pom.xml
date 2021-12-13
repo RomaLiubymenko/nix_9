@@ -26,6 +26,7 @@
         <module>module_2</module>
         <module>math_collection</module>
         <module>math_collection_test</module>
+        <module>cs_avl</module>
         <module>common_ui</module>
         <module>common_reverse_strings</module>
         <module>common_csv_util</module>
