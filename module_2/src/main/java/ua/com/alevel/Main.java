@@ -10,7 +10,6 @@ import java.nio.charset.StandardCharsets;
 public class Main {
 
     public static void main(String[] args) {
-
         UniqueNameService taskService = new UniqueNameService();
         DateService dateService = new DateService();
         GraphService graphService = new GraphService();
