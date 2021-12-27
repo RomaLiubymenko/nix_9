@@ -1,6 +1,5 @@
 package ua.nure.cs.heap;
 
-import java.lang.Comparable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,7 +47,6 @@ public class BinomialHeap<T extends Comparable<T>> {
         }
     }
 
-    // Implemented to test delete/decrease key, runs in O(n) time
     public Node<T> search(T key) {
         List<Node<T>> nodes = new ArrayList<Node<T>>();
         nodes.add(head);
@@ -129,7 +127,6 @@ public class BinomialHeap<T extends Comparable<T>> {
             prev.sibling = root.sibling;
         }
 
-        // Reverse the order of root's children and make a new heap
         Node<T> newHead = null;
         Node<T> child = root.child;
         while (child != null) {
@@ -140,12 +137,9 @@ public class BinomialHeap<T extends Comparable<T>> {
             child = next;
         }
         BinomialHeap<T> newHeap = new BinomialHeap<T>(newHead);
-
-        // Union the heaps and set its head as this.head
         head = union(newHeap);
     }
 
-    // Merge two binomial trees of the same order
     private void linkTree(Node<T> minNodeTree, Node<T> other) {
         other.parent = minNodeTree;
         other.sibling = minNodeTree.child;
@@ -153,21 +147,17 @@ public class BinomialHeap<T extends Comparable<T>> {
         minNodeTree.degree++;
     }
 
-    // Union two binomial heaps into one and return the head
     public Node<T> union(BinomialHeap<T> heap) {
         Node<T> newHead = merge(this, heap);
 
         head = null;
         heap.head = null;
-
         if (newHead == null) {
             return null;
         }
-
         Node<T> prev = null;
         Node<T> curr = newHead;
         Node<T> next = newHead.sibling;
-
         while (next != null) {
             if (curr.degree != next.degree || (next.sibling != null &&
                     next.sibling.degree == curr.degree)) {
@@ -183,15 +173,12 @@ public class BinomialHeap<T extends Comparable<T>> {
                     } else {
                         prev.sibling = next;
                     }
-
                     linkTree(next, curr);
                     curr = next;
                 }
             }
-
             next = curr.sibling;
         }
-
         return newHead;
     }
 
@@ -281,5 +268,4 @@ public class BinomialHeap<T extends Comparable<T>> {
             }
         }
     }
-
 }

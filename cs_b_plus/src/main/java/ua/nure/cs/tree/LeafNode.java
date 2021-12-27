@@ -14,7 +14,7 @@ class LeafNode<TKey extends Comparable<TKey>, TValue> extends Node<TKey> {
 
     @SuppressWarnings("unchecked")
     public TValue getValue(int index) {
-        return (TValue)this.values[index];
+        return (TValue) this.values[index];
     }
 
     public void setValue(int index, TValue value) {
@@ -33,8 +33,7 @@ class LeafNode<TKey extends Comparable<TKey>, TValue> extends Node<TKey> {
             int cmp = this.getKey(i).compareTo(key);
             if (cmp == 0) {
                 return i;
-            }
-            else if (cmp > 0) {
+            } else if (cmp > 0) {
                 return -1;
             }
         }
@@ -114,7 +113,7 @@ class LeafNode<TKey extends Comparable<TKey>, TValue> extends Node<TKey> {
     @Override
     @SuppressWarnings("unchecked")
     protected void fusionWithSibling(TKey sinkKey, Node<TKey> rightSibling) {
-        LeafNode<TKey, TValue> siblingLeaf = (LeafNode<TKey, TValue>)rightSibling;
+        LeafNode<TKey, TValue> siblingLeaf = (LeafNode<TKey, TValue>) rightSibling;
         BTreeUtils.viewedNodesCounterForDelete++;
         int j = this.getKeyCount();
         for (int i = 0; i < siblingLeaf.getKeyCount(); ++i) {
@@ -134,7 +133,7 @@ class LeafNode<TKey extends Comparable<TKey>, TValue> extends Node<TKey> {
     @Override
     @SuppressWarnings("unchecked")
     protected TKey transferFromSibling(TKey sinkKey, Node<TKey> sibling, int borrowIndex) {
-        LeafNode<TKey, TValue> siblingNode = (LeafNode<TKey, TValue>)sibling;
+        LeafNode<TKey, TValue> siblingNode = (LeafNode<TKey, TValue>) sibling;
         BTreeUtils.viewedNodesCounterForDelete++;
         this.insertKey(siblingNode.getKey(borrowIndex), siblingNode.getValue(borrowIndex));
         siblingNode.deleteAt(borrowIndex);

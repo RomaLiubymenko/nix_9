@@ -61,7 +61,7 @@ abstract class Node<TKey extends Comparable<TKey>> {
         if (this.getRightSibling() != null)
             this.getRightSibling().setLeftSibling(newRNode);
         this.setRightSibling(newRNode);
-        BTreeUtils.viewedNodesCounterForInsert+=2;
+        BTreeUtils.viewedNodesCounterForInsert += 2;
         return this.getParent().pushUpKey(upKey, this, newRNode);
     }
 

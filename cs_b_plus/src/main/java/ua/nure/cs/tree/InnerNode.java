@@ -100,7 +100,7 @@ class InnerNode<TKey extends Comparable<TKey>> extends Node<TKey> {
             this.setKey(i, this.getKey(i + 1));
             this.setChild(i + 1, this.getChild(i + 2));
         }
-        BTreeUtils.viewedNodesCounterForDelete+=i;
+        BTreeUtils.viewedNodesCounterForDelete += i;
         this.setKey(i, null);
         this.setChild(i + 1, null);
         --this.keyCount;
@@ -112,7 +112,7 @@ class InnerNode<TKey extends Comparable<TKey>> extends Node<TKey> {
         int borrowerChildIndex = 0;
         while (borrowerChildIndex < this.getKeyCount() + 1 && this.getChild(borrowerChildIndex) != borrower)
             ++borrowerChildIndex;
-        BTreeUtils.viewedNodesCounterForDelete+=borrowerChildIndex;
+        BTreeUtils.viewedNodesCounterForDelete += borrowerChildIndex;
         if (borrowIndex == 0) {
             TKey upKey = borrower.transferFromSibling(this.getKey(borrowerChildIndex), lender, borrowIndex);
             this.setKey(borrowerChildIndex, upKey);
@@ -128,7 +128,7 @@ class InnerNode<TKey extends Comparable<TKey>> extends Node<TKey> {
         while (index < this.getKeyCount() && this.getChild(index) != leftChild)
             ++index;
 
-        BTreeUtils.viewedNodesCounterForDelete+=index;
+        BTreeUtils.viewedNodesCounterForDelete += index;
         TKey sinkKey = this.getKey(index);
         leftChild.fusionWithSibling(sinkKey, rightChild);
         this.deleteAt(index);
