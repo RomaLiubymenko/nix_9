@@ -5,6 +5,9 @@ import java.util.List;
 
 public class BinomialHeap<T extends Comparable<T>> {
 
+    public int countOfUnionForInsertion = 0;
+    public int countOfUnionForExtract = 0;
+
     private Node<T> head;
 
     public BinomialHeap() {
@@ -24,8 +27,9 @@ public class BinomialHeap<T extends Comparable<T>> {
     }
 
     public void insert(T key) {
-        Node<T> node = new Node<T>(key);
-        BinomialHeap<T> tempHeap = new BinomialHeap<T>(node);
+        Node<T> node = new Node<>(key);
+        BinomialHeap<T> tempHeap = new BinomialHeap<>(node);
+        countOfUnionForInsertion++;
         head = union(tempHeap);
     }
 
@@ -48,7 +52,7 @@ public class BinomialHeap<T extends Comparable<T>> {
     }
 
     public Node<T> search(T key) {
-        List<Node<T>> nodes = new ArrayList<Node<T>>();
+        List<Node<T>> nodes = new ArrayList<>();
         nodes.add(head);
         while (!nodes.isEmpty()) {
             Node<T> curr = nodes.get(0);
@@ -120,7 +124,6 @@ public class BinomialHeap<T extends Comparable<T>> {
     }
 
     private void removeTreeRoot(Node<T> root, Node<T> prev) {
-        // Remove root from the heap
         if (root == head) {
             head = root.sibling;
         } else {
@@ -136,7 +139,8 @@ public class BinomialHeap<T extends Comparable<T>> {
             newHead = child;
             child = next;
         }
-        BinomialHeap<T> newHeap = new BinomialHeap<T>(newHead);
+        BinomialHeap<T> newHeap = new BinomialHeap<>(newHead);
+        countOfUnionForExtract++;
         head = union(newHeap);
     }
 
@@ -182,8 +186,7 @@ public class BinomialHeap<T extends Comparable<T>> {
         return newHead;
     }
 
-    private static <T extends Comparable<T>> Node<T> merge(
-            BinomialHeap<T> heap1, BinomialHeap<T> heap2) {
+    private static <T extends Comparable<T>> Node<T> merge(BinomialHeap<T> heap1, BinomialHeap<T> heap2) {
         if (heap1.head == null) {
             return heap2.head;
         } else if (heap2.head == null) {
@@ -232,8 +235,7 @@ public class BinomialHeap<T extends Comparable<T>> {
         }
     }
 
-    public static class Node<T extends Comparable<T>>
-            implements Comparable<Node<T>> {
+    public static class Node<T extends Comparable<T>> implements Comparable<Node<T>> {
         public T key;
         public int degree;
         public Node<T> parent;
