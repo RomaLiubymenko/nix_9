@@ -42,9 +42,6 @@ class LeafNode<TKey extends Comparable<TKey>, TValue> extends Node<TKey> {
         return -1;
     }
 
-
-    /* The codes below are used to support insertion operation */
-
     public void insertKey(TKey key, TValue value) {
         int index = 0;
         while (index < this.getKeyCount() && this.getKey(index).compareTo(key) < 0)
@@ -53,22 +50,15 @@ class LeafNode<TKey extends Comparable<TKey>, TValue> extends Node<TKey> {
     }
 
     private void insertAt(int index, TKey key, TValue value) {
-        // move space for the new key
         for (int i = this.getKeyCount() - 1; i >= index; --i) {
             this.setKey(i + 1, this.getKey(i));
             this.setValue(i + 1, this.getValue(i));
         }
-
-        // insert new key and value
         this.setKey(index, key);
         this.setValue(index, value);
         ++this.keyCount;
     }
 
-
-    /**
-     * When splits a leaf node, the middle key is kept on new node and be pushed to parent node.
-     */
     @Override
     protected Node<TKey> split() {
         int midIndex = this.getKeyCount() / 2;
@@ -90,11 +80,6 @@ class LeafNode<TKey extends Comparable<TKey>, TValue> extends Node<TKey> {
     protected Node<TKey> pushUpKey(TKey key, Node<TKey> leftChild, Node<TKey> rightNode) {
         throw new UnsupportedOperationException();
     }
-
-
-
-
-    /* The codes below are used to support deletion operation */
 
     public boolean delete(TKey key) {
         int index = this.search(key);
@@ -126,9 +111,6 @@ class LeafNode<TKey extends Comparable<TKey>, TValue> extends Node<TKey> {
         throw new UnsupportedOperationException();
     }
 
-    /**
-     * Notice that the key sunk from parent is be abandoned. 
-     */
     @Override
     @SuppressWarnings("unchecked")
     protected void fusionWithSibling(TKey sinkKey, Node<TKey> rightSibling) {

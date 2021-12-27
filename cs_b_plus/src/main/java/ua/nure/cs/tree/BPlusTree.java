@@ -13,9 +13,6 @@ public class BPlusTree<TKey extends Comparable<TKey>, TValue> {
         height = 1;
     }
 
-    /**
-     * Insert a new key and its associated value into the B+ tree.
-     */
     public void insert(TKey key, TValue value) {
         LeafNode<TKey, TValue> leaf = this.findLeafNodeShouldContainKey(key, 1);
         leaf.insertKey(key, value);
@@ -28,9 +25,6 @@ public class BPlusTree<TKey extends Comparable<TKey>, TValue> {
         }
     }
 
-    /**
-     * Delete a key and its associated value from the tree.
-     */
     public void delete(TKey key) {
         LeafNode<TKey, TValue> leaf = this.findLeafNodeShouldContainKey(key, 2);
 
@@ -41,18 +35,12 @@ public class BPlusTree<TKey extends Comparable<TKey>, TValue> {
         }
     }
 
-    /**
-     * Search a key value on the tree and return its associated value.
-     */
     public TValue search(TKey key) {
         LeafNode<TKey, TValue> leaf = this.findLeafNodeShouldContainKey(key, 3);
         int index = leaf.search(key);
         return (index == -1) ? null : leaf.getValue(index);
     }
 
-    /**
-     * Search the leaf node which should contain the specified key
-     */
     @SuppressWarnings("unchecked")
     private LeafNode<TKey, TValue> findLeafNodeShouldContainKey(TKey key, int operationType) {
         Node<TKey> node = this.root;

@@ -38,19 +38,19 @@ public class BTreeUtils {
         for (int i = 0; i < operationsCount; i++) {
             int randomNumberOperation = random.nextInt((3 - 1) + 1);
             if (randomNumberOperation == 0) {
-                long startInsert = System.currentTimeMillis();
+                long startInsert = System.nanoTime();
                 tree.insert(50, 50);
-                totalInsertionTime += System.currentTimeMillis() - startInsert;
+                totalInsertionTime += System.nanoTime() - startInsert;
                 counterForInsertion++;
             } else if (randomNumberOperation == 1) {
-                long startDeletion = System.currentTimeMillis();
+                long startDeletion = System.nanoTime();
                 tree.delete(50);
-                totalDeletionTime += System.currentTimeMillis() - startDeletion;
+                totalDeletionTime += System.nanoTime() - startDeletion;
                 counterForDeletion++;
             } else {
-                long startSearching = System.currentTimeMillis();
+                long startSearching = System.nanoTime();
                 tree.search(50);
-                totalSearchingTime += System.currentTimeMillis() - startSearching;
+                totalSearchingTime += System.nanoTime() - startSearching;
                 counterForSearch++;
             }
         }
