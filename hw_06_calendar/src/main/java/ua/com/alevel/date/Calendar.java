@@ -32,14 +32,7 @@ public class Calendar {
 
     public Calendar(long millisecond) {
         // todo: add exception on wrong date and format
-        this.timeInMillis = millisecond;
-        this.millisecond = millisecond;
-        this.second = getSecondFromMillis(millisecond);
-        this.minute = getMinuteFromMillis(millisecond);
-        this.hour = getHourFromMillis(millisecond);
-        this.day = getDayFromMillis(millisecond);
-        this.month = getMonthFromMillis(millisecond);
-        this.year = getYearFromMillis(millisecond);
+        fillTimeByMillis(millisecond);
     }
 
     public long toTimeMillis(long millisecond, long second, long minute, long hour, long day, long month, long year) {
@@ -53,30 +46,29 @@ public class Calendar {
         return timeInMillis;
     }
 
-    private long toMillisFromMonth(long month, long year) {
-        long time = 0;
-        if (month == 1) return 0;
-        for (int i = 1; i < month; i++) {
-            time += toMillisFromDay(getCountDaysInMonth(i, (int) year));
-        }
-        return time;
+    private void fillTimeByMillis(long millis) {
+        this.timeInMillis = millis;
+        this.millisecond = getMillisFromMillis(millis);
+        this.second = getSecondFromMillis(millis);
+        this.minute = getMinuteFromMillis(millis);
+        this.hour = getHourFromMillis(millis);
+        this.day = getDayFromMillis(millis);
+        this.month = getMonthFromMillis(millis);
+        this.year = getYearFromMillis(millis);
     }
 
     private long toMillisFromYear(long year) {
-        long dayInMillis = (long) MILLIS_IN_SECOND * SECONDS_IN_MINUTE * MINUTES_IN_HOUR * HOURS_IN_DAY;
         long time = 0;
-        for (int i = 1; i < year; i++) {
-            final long dayInYear = getDaysFromYear(i);
-            long test = dayInYear * dayInMillis;
-            time = time + test;
-        }
-        for (int i = 1; i <= year / 100; i++) {
-            if (year >= ((100L * i) + 1)) {
-                time += dayInMillis;
-            }
-            if (year >= ((400L * i) + 1)) {
-                time -= dayInMillis;
-            }
+        time += toMillisFromDay(year * DAYS_IN_YEAR);
+        time += toMillisFromDay(year / 4);
+        return time;
+    }
+
+    private long toMillisFromMonth(long month, long year) {
+        long time = 0;
+        if (month == 1 || month == 0) return 0;
+        for (int i = 1; i < month; i++) {
+            time += toMillisFromDay(getCountDaysInMonth(i, (int) year));
         }
         return time;
     }
@@ -97,24 +89,24 @@ public class Calendar {
         return MILLIS_IN_SECOND * secondCount;
     }
 
-    public long getMillisFromMillis(long millis) {
+    private long getMillisFromMillis(long millis) {
         return millis % MILLIS_IN_SECOND;
     }
 
-    public long getSecondFromMillis(long millis) {
+    private long getSecondFromMillis(long millis) {
         return (millis / MILLIS_IN_SECOND) % SECONDS_IN_MINUTE;
     }
 
-    public long getMinuteFromMillis(long millis) {
+    private long getMinuteFromMillis(long millis) {
         return (millis / ((long) MILLIS_IN_SECOND * SECONDS_IN_MINUTE)) % MINUTES_IN_HOUR;
     }
 
-    public long getHourFromMillis(long millis) {
+    private long getHourFromMillis(long millis) {
         return (millis / ((long) MILLIS_IN_SECOND * SECONDS_IN_MINUTE * MINUTES_IN_HOUR)) % HOURS_IN_DAY;
     }
 
-    public long getDayFromMillis(long millis) {
-        long daysInThisYear = ((getAllDaysFromMillis(millis)) % (DAYS_IN_YEAR * 3L + DAYS_IN_LEAP_YEAR)) % 365;
+    private long getDayFromMillis(long millis) {
+        long daysInThisYear = (getAllDaysFromMillis(millis)) % (DAYS_IN_YEAR * 3L + DAYS_IN_LEAP_YEAR) % 365;
         long currentYear = getYearFromMillis(millis);
         for (int currentMonth = 1; currentMonth <= 12; currentMonth++) {
             if (daysInThisYear >= getCountDaysInMonth(currentMonth, (int) currentYear)) {
@@ -126,47 +118,43 @@ public class Calendar {
         return daysInThisYear;
     }
 
-    public long getMonthFromMillis(long millis) {
-        long allDays = getAllDaysFromMillis(millis);
+    private long getMonthFromMillis(long millis) {
         long currentYear = getYearFromMillis(millis);
-        for (long yearIndex = 1; yearIndex < currentYear; yearIndex++) {
-            allDays -= getDaysFromYear(yearIndex);
-        }
-        int monthNumber = 1;
+        long millisWithoutYear = millis - toMillisFromYear(currentYear);
+        long allDays = getAllDaysFromMillis(millisWithoutYear);
+        long monthCount = 0;
         for (int i = 1; i <= 12; i++) {
-            int daysInMonth = getCountDaysInMonth(i, (int) currentYear);
-            if (allDays <= daysInMonth) {
-                break;
+            int countDaysInMonth = getCountDaysInMonth(i, (int) currentYear);
+            if (allDays >= countDaysInMonth) {
+                allDays -= countDaysInMonth;
+                monthCount++;
             } else {
-                allDays -= daysInMonth;
-                monthNumber++;
+                monthCount++;
+                return monthCount;
             }
         }
-        return monthNumber;
+        return monthCount;
     }
 
-    public long getYearFromMillis(long millis) {
-        long numberOfYears = 1;
-        int count = 0;
+    private long getYearFromMillis(long millis) {
+        long yearCount = 0;
         long days = getAllDaysFromMillis(millis);
-        while (true) {
-            if (days >= DAYS_IN_YEAR) {
-                switch (++count) {
-                    case 1, 2, 3 -> {
-                        numberOfYears++;
-                        days = days - DAYS_IN_YEAR;
-                    }
-                    case 4 -> {
-                        numberOfYears++;
-                        days = days - DAYS_IN_LEAP_YEAR;
-                        count = 0;
-                    }
+        while (days > 0) {
+            if (isLeapYear(yearCount)) {
+                if (days >= DAYS_IN_LEAP_YEAR) {
+                    days -= DAYS_IN_LEAP_YEAR;
+                    yearCount++;
+                } else {
+                    return yearCount;
                 }
+            } else if (days >= DAYS_IN_YEAR) {
+                days -= DAYS_IN_YEAR;
+                yearCount++;
             } else {
-                break;
+                return yearCount;
             }
         }
-        return numberOfYears;
+        return yearCount;
     }
 
     private long getAllDaysFromMillis(long millis) {
@@ -235,5 +223,65 @@ public class Calendar {
 
     public long getYear() {
         return year;
+    }
+
+    public void addMilliseconds(long millis) {
+        timeInMillis += millis;
+        fillTimeByMillis(timeInMillis);
+    }
+
+    public void addSeconds(long seconds) {
+        timeInMillis += toMillisFromSecond(seconds);
+        fillTimeByMillis(timeInMillis);
+    }
+
+    public void addMinutes(long minutes) {
+        timeInMillis += toMillisFromMinute(minutes);
+        fillTimeByMillis(timeInMillis);
+    }
+
+    public void addHours(long hours) {
+        timeInMillis += toMillisFromHour(hours);
+        fillTimeByMillis(timeInMillis);
+    }
+
+    public void addDays(long days) {
+        timeInMillis += toMillisFromDay(days);
+        fillTimeByMillis(timeInMillis);
+    }
+
+    public void addYears(long years) {
+        timeInMillis += toMillisFromYear(years);
+        fillTimeByMillis(timeInMillis);
+    }
+
+    public void subtractMilliseconds(long millis) {
+        timeInMillis -= millis;
+        fillTimeByMillis(timeInMillis);
+    }
+
+    public void subtractSeconds(long seconds) {
+        timeInMillis -= toMillisFromSecond(seconds);
+        fillTimeByMillis(timeInMillis);
+    }
+
+    public void subtractMinutes(long minutes) {
+        timeInMillis -= toMillisFromMinute(minutes);
+        fillTimeByMillis(timeInMillis);
+    }
+
+    public void subtractHours(long hours) {
+        timeInMillis -= toMillisFromHour(hours);
+        fillTimeByMillis(timeInMillis);
+    }
+
+    public void subtractDays(long days) {
+        timeInMillis -= toMillisFromDay(days);
+        fillTimeByMillis(timeInMillis);
+    }
+
+    public void subtractYears(long years) {
+        timeInMillis -= toMillisFromYear(years);
+        fillTimeByMillis(timeInMillis);
     }
 }
