@@ -5,7 +5,6 @@ import ua.com.alevel.enumeration.DateTemplate;
 import ua.com.alevel.util.DateOperationUtil;
 import ua.com.alevel.util.ParseDateUtil;
 
-import java.util.Collections;
 import java.util.List;
 
 public class DateService {
@@ -25,7 +24,7 @@ public class DateService {
         };
     }
 
-    public String addToDateMilliseconds(String dateString, String times, DateTemplate inputTemplate, DateTemplate outputTemplate, int typeOfTime) {
+    public String addToDateTime(String dateString, String times, DateTemplate inputTemplate, DateTemplate outputTemplate, int typeOfTime) {
         Calendar date = ParseDateUtil.parseDateByTemplate(dateString, inputTemplate);
         long time = Long.parseLong(times);
         switch (typeOfTime) {

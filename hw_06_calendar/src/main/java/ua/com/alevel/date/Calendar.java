@@ -1,5 +1,7 @@
 package ua.com.alevel.date;
 
+import ua.com.alevel.exception.DateValidationException;
+
 public class Calendar {
 
     private static int MILLIS_IN_SECOND = 1000;
@@ -19,20 +21,62 @@ public class Calendar {
     private long timeInMillis;
 
     public Calendar(long millisecond, long second, long minute, long hour, long day, long month, long year) {
-        // todo: add exception on wrong date and format
-        this.millisecond = millisecond;
-        this.second = second;
-        this.minute = minute;
-        this.hour = hour;
-        this.day = day;
-        this.month = month;
-        this.year = year;
-        this.timeInMillis = toTimeMillis(millisecond, second, minute, hour, day, month, year);
+        if (validateDate(millisecond, second, minute, hour, day, month, year)) {
+            this.timeInMillis = toTimeMillis(millisecond, second, minute, hour, day, month, year);
+        }
     }
 
     public Calendar(long millisecond) {
-        // todo: add exception on wrong date and format
+        if (millisecond < 0) {
+            System.out.println("milliseconds cannot be less than 0");
+        }
         fillTimeByMillis(millisecond);
+    }
+
+    private boolean validateDate(long millisecond, long second, long minute, long hour, long day, long month, long year) {
+        if (isValidMillis(millisecond)) {
+            this.millisecond = millisecond;
+        } else {
+            System.out.println("Milliseconds out of bounds");
+            return false;
+        }
+        if (isValidSeconds(second)) {
+            this.second = second;
+        } else {
+            System.out.println("Seconds out of bounds");
+            return false;
+        }
+        if (isValidMinutes(minute)) {
+            this.minute = minute;
+        } else {
+            System.out.println("Minutes out of bounds");
+            return false;
+        }
+        if (isValidHours(hour)) {
+            this.hour = hour;
+        } else {
+            System.out.println("Hours out of bounds");
+            return false;
+        }
+        if (isValidDays(day)) {
+            this.day = day;
+        } else {
+            System.out.println("Days out of bounds");
+            return false;
+        }
+        if (isValidMonths(month)) {
+            this.month = month;
+        } else {
+            System.out.println("Months out of bounds");
+            return false;
+        }
+        if (isValidYears(year)) {
+            this.year = year;
+        } else {
+            System.out.println("Years out of bounds");
+            return false;
+        }
+        return true;
     }
 
     public long toTimeMillis(long millisecond, long second, long minute, long hour, long day, long month, long year) {
@@ -283,5 +327,33 @@ public class Calendar {
     public void subtractYears(long years) {
         timeInMillis -= toMillisFromYear(years);
         fillTimeByMillis(timeInMillis);
+    }
+
+    private boolean isValidMillis(long millis) {
+        return millis >= 0 && millis <= 999;
+    }
+
+    private boolean isValidSeconds(long seconds) {
+        return seconds >= 0 && seconds <= 59;
+    }
+
+    private boolean isValidMinutes(long minutes) {
+        return minutes >= 0 && minutes <= 59;
+    }
+
+    private boolean isValidHours(long hours) {
+        return hours >= 0 && hours <= 23;
+    }
+
+    private boolean isValidDays(long days) {
+        return days >= 0;
+    }
+
+    private boolean isValidMonths(long months) {
+        return months >= 0 && months <= 12;
+    }
+
+    private boolean isValidYears(long years) {
+        return years >= 0;
     }
 }

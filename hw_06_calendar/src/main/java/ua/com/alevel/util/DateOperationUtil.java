@@ -3,6 +3,7 @@ package ua.com.alevel.util;
 import ua.alevel.commons.util.sort.MathCollectionUtils;
 import ua.com.alevel.date.Calendar;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -26,8 +27,12 @@ public class DateOperationUtil {
         List<Calendar> resultDates = Arrays.stream(millis)
                 .map(Calendar::new)
                 .toList();
+
         if (isAscending) return resultDates;
-        Collections.reverse(resultDates);
-        return resultDates;
+        List<Calendar> resultDesc = new ArrayList<>();
+        for (int i = resultDates.size() - 1; i >= 0; i--) {
+            resultDesc.add(resultDates.get(i));
+        }
+        return resultDesc;
     }
 }

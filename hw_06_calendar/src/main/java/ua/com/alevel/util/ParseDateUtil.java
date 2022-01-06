@@ -2,7 +2,9 @@ package ua.com.alevel.util;
 
 import ua.com.alevel.date.Calendar;
 import ua.com.alevel.enumeration.DateTemplate;
+import ua.com.alevel.exception.DateValidationException;
 
+import java.text.ParseException;
 import java.util.List;
 
 public class ParseDateUtil {
@@ -19,78 +21,81 @@ public class ParseDateUtil {
         long month = 0;
         long day = 0;
         String[] stringDate;
-        String[] dateTime = dateString.split(" ");
-        switch (dateTemplate) {
-            case DD_SLASH_MM_SLASH_YYYY -> {
-                stringDate = dateTime[0].split(SLASH);
-                switch (stringDate.length) {
-                    case 1 -> {
-                        year = Long.parseLong(stringDate[0]);
+        String[] dateTime = dateString.strip().split(" ");
+        try {
+            switch (dateTemplate) {
+                case DD_SLASH_MM_SLASH_YYYY -> {
+                    stringDate = dateTime[0].split(SLASH);
+                    switch (stringDate.length) {
+                        case 1 -> {
+                            year = Long.parseLong(stringDate[0]);
+                        }
+                        case 2 -> {
+                            month = Long.parseLong(stringDate[0]);
+                            year = Long.parseLong(stringDate[1]);
+                        }
+                        case 3 -> {
+                            day = Long.parseLong(stringDate[0]);
+                            month = Long.parseLong(stringDate[1]);
+                            year = Long.parseLong(stringDate[2]);
+                        }
                     }
-                    case 2 -> {
-                        month = Long.parseLong(stringDate[0]);
-                        year = Long.parseLong(stringDate[1]);
+                }
+                case M_SLASH_D_SLASH_YYYY -> {
+                    stringDate = dateTime[0].split(SLASH);
+                    switch (stringDate.length) {
+                        case 1 -> {
+                            year = Long.parseLong(stringDate[0]);
+                        }
+                        case 2 -> {
+                            day = Long.parseLong(stringDate[0]);
+                            year = Long.parseLong(stringDate[1]);
+                        }
+                        case 3 -> {
+                            month = Long.parseLong(stringDate[0]);
+                            day = Long.parseLong(stringDate[1]);
+                            year = Long.parseLong(stringDate[2]);
+                        }
                     }
-                    case 3 -> {
-                        day = Long.parseLong(stringDate[0]);
-                        month = Long.parseLong(stringDate[1]);
-                        year = Long.parseLong(stringDate[2]);
+                }
+                case MMM_HYPHEN_D_HYPHEN_YYYY -> {
+                    stringDate = dateTime[0].split(HYPHEN);
+                    switch (stringDate.length) {
+                        case 1 -> {
+                            year = Long.parseLong(stringDate[0]);
+                        }
+                        case 2 -> {
+                            day = Long.parseLong(stringDate[0]);
+                            year = Long.parseLong(stringDate[1]);
+                        }
+                        case 3 -> {
+                            month = getMonthNumberByName(stringDate[0]);
+                            day = Long.parseLong(stringDate[1]);
+                            year = Long.parseLong(stringDate[2]);
+                        }
+                    }
+                }
+                case DD_HYPHEN_MMM_HYPHEN_YYYY -> {
+                    stringDate = dateTime[0].split(HYPHEN);
+                    switch (stringDate.length) {
+                        case 1 -> {
+                            year = Long.parseLong(stringDate[0]);
+                        }
+                        case 2 -> {
+                            month = getMonthNumberByName(stringDate[0]);
+                            year = Long.parseLong(stringDate[1]);
+                        }
+                        case 3 -> {
+                            day = Long.parseLong(stringDate[0]);
+                            month = getMonthNumberByName(stringDate[1]);
+                            year = Long.parseLong(stringDate[2]);
+                        }
                     }
                 }
             }
-            case M_SLASH_D_SLASH_YYYY -> {
-                stringDate = dateTime[0].split(SLASH);
-                switch (stringDate.length) {
-                    case 1 -> {
-                        year = Long.parseLong(stringDate[0]);
-                    }
-                    case 2 -> {
-                        day = Long.parseLong(stringDate[0]);
-                        year = Long.parseLong(stringDate[1]);
-                    }
-                    case 3 -> {
-                        month = Long.parseLong(stringDate[0]);
-                        day = Long.parseLong(stringDate[1]);
-                        year = Long.parseLong(stringDate[2]);
-                    }
-                }
-            }
-            case MMM_HYPHEN_D_HYPHEN_YYYY -> {
-                stringDate = dateTime[0].split(HYPHEN);
-                switch (stringDate.length) {
-                    case 1 -> {
-                        year = Long.parseLong(stringDate[0]);
-                    }
-                    case 2 -> {
-                        day = Long.parseLong(stringDate[0]);
-                        year = Long.parseLong(stringDate[1]);
-                    }
-                    case 3 -> {
-                        month = getMonthNumberByName(stringDate[0]);
-                        day = Long.parseLong(stringDate[1]);
-                        year = Long.parseLong(stringDate[2]);
-                    }
-                }
-            }
-            case DD_HYPHEN_MMM_HYPHEN_YYYY -> {
-                stringDate = dateTime[0].split(HYPHEN);
-                switch (stringDate.length) {
-                    case 1 -> {
-                        year = Long.parseLong(stringDate[0]);
-                    }
-                    case 2 -> {
-                        month = getMonthNumberByName(stringDate[0]);
-                        year = Long.parseLong(stringDate[1]);
-                    }
-                    case 3 -> {
-                        day = Long.parseLong(stringDate[0]);
-                        month = getMonthNumberByName(stringDate[1]);
-                        year = Long.parseLong(stringDate[2]);
-                    }
-                }
-            }
+        } catch (Exception e) {
+            throw new DateValidationException("Date entered incorrectly");
         }
-
         Calendar calendar = getTimeFromString(dateTime);
         return new Calendar(
                 calendar.getMillisecond(),
@@ -106,9 +111,11 @@ public class ParseDateUtil {
         switch (dateTemplate) {
             case DD_SLASH_MM_SLASH_YYYY -> {
                 if (date.getDay() < 10) stringBuilder.append("0");
+                if (date.getDay()  == 0) stringBuilder.append("00");
                 stringBuilder.append(date.getDay());
                 stringBuilder.append(SLASH);
                 if (date.getMonth() < 10) stringBuilder.append("0");
+                if (date.getMonth()  == 0) stringBuilder.append("00");
                 stringBuilder.append(date.getMonth());
                 stringBuilder.append(SLASH);
                 stringBuilder.append(date.getYear());
@@ -129,6 +136,7 @@ public class ParseDateUtil {
             }
             case DD_HYPHEN_MMM_HYPHEN_YYYY -> {
                 if (date.getDay() < 10) stringBuilder.append("0");
+                if (date.getDay() == 0) stringBuilder.append("00");
                 stringBuilder.append(date.getDay());
                 stringBuilder.append(HYPHEN);
                 stringBuilder.append(getMonthFromNumber((int) date.getMonth()));
@@ -137,12 +145,17 @@ public class ParseDateUtil {
             }
         }
         stringBuilder.append(" ");
+        if (date.getHour() < 10) stringBuilder.append("0");
         stringBuilder.append(date.getHour());
         stringBuilder.append(COLON);
+        if (date.getMinute() < 10) stringBuilder.append("0");
         stringBuilder.append(date.getMinute());
         stringBuilder.append(COLON);
+        if (date.getSecond() < 10) stringBuilder.append("0");
         stringBuilder.append(date.getSecond());
         stringBuilder.append(COLON);
+        if (date.getMillisecond() < 10) stringBuilder.append("00");
+        if (date.getMillisecond() < 100) stringBuilder.append("0");
         stringBuilder.append(date.getMillisecond());
         return stringBuilder.toString();
     }
