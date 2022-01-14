@@ -1,0 +1,13 @@
+@media screen and (max-width: 760px){
+  .text-last, .text-first{
+    display: none;
+  }
+}
+.pagination.pg-blue .page-item.active .page-link {
+  background-color: #6366F1 !important;
+  color: white !important;
+}
+
+.page-link {
+  padding: 0.5rem 0.85rem;
+}
