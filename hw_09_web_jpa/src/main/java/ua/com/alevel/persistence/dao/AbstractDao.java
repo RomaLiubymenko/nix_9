@@ -4,7 +4,7 @@ import ua.com.alevel.persistence.datatable.DataTableRequest;
 import ua.com.alevel.persistence.datatable.DataTableResponse;
 import ua.com.alevel.persistence.entity.AbstractEntity;
 
-import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 public interface AbstractDao<ENTITY extends AbstractEntity> {
@@ -21,7 +21,7 @@ public interface AbstractDao<ENTITY extends AbstractEntity> {
 
     DataTableResponse<ENTITY> findAll(DataTableRequest request);
 
-    List<ENTITY> findAll();
+    Set<ENTITY> findAll();
 
     long count();
 }

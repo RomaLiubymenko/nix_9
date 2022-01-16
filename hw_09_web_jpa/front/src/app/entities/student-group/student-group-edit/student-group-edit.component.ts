@@ -19,6 +19,7 @@ export class StudentGroupEditComponent implements OnInit {
   group: StudentGroup;
   students: Student[];
   studentsForSelect: any[] = [];
+  isLoading: boolean = true;
 
   groupTypes = [
     {name: 'Group', code: GroupType.GROUP},
@@ -37,7 +38,7 @@ export class StudentGroupEditComponent implements OnInit {
   ngOnInit(): void {
     this.route.data.subscribe(({group}) => {
       this.group = group;
-      if (!!this.group.studentUuids) {
+      if (this.group.studentUuids?.length) {
         // todo: fix it
         const observableStudents$: ObservableInput<any>[] = [];
         this.group.studentUuids.forEach(uuid => {
@@ -45,7 +46,10 @@ export class StudentGroupEditComponent implements OnInit {
         });
         forkJoin(observableStudents$).subscribe((students: Student[]) => {
           this.students = students;
+          this.isLoading = false;
         });
+      } else {
+        this.isLoading = false;
       }
       this.createStudentsForSelect();
     });

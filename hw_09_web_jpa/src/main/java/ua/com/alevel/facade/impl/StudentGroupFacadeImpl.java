@@ -17,13 +17,16 @@ import ua.com.alevel.service.StudentService;
 import ua.com.alevel.util.WebRequestUtil;
 import ua.com.alevel.util.WebResponseUtil;
 
+import javax.transaction.Transactional;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional
 public class StudentGroupFacadeImpl implements StudentGroupFacade {
 
     private final StudentService studentService;
@@ -44,7 +47,9 @@ public class StudentGroupFacadeImpl implements StudentGroupFacade {
             Set<Student> students = studentGroupRequestDto.getStudentUuids().stream()
                     .map(studentService::findByUuid)
                     .collect(Collectors.toSet());
-            studentGroup.setStudents(students);
+            for (Student student : students) {
+                studentGroup.addStudent(student);
+            }
         }
         studentGroupService.create(studentGroup);
     }
@@ -56,11 +61,19 @@ public class StudentGroupFacadeImpl implements StudentGroupFacade {
         studentGroup.setName(studentGroupRequestDto.getName());
         studentGroup.setDescription(studentGroupRequestDto.getDescription());
         studentGroup.setGroupType(studentGroupRequestDto.getGroupType());
+        if (!studentGroup.getStudents().isEmpty()) {
+            List<Student> studentListForDelete = new ArrayList<>(studentGroup.getStudents());
+            for (Student student : studentListForDelete) {
+                studentGroup.removeStudent(student);
+            }
+        }
         if (!studentGroupRequestDto.getStudentUuids().isEmpty()) {
             Set<Student> students = studentGroupRequestDto.getStudentUuids().stream()
                     .map(studentService::findByUuid)
                     .collect(Collectors.toSet());
-            studentGroup.setStudents(students);
+            for (Student student : students) {
+                studentGroup.addStudent(student);
+            }
         }
         studentGroupService.update(studentGroup);
     }
@@ -95,7 +108,7 @@ public class StudentGroupFacadeImpl implements StudentGroupFacade {
 
     @Override
     public List<StudentGroupResponseDto> findAll() {
-        List<StudentGroup> groups = studentGroupService.findAll();
+        Set<StudentGroup> groups = studentGroupService.findAll();
         return groups.stream()
                 .map(StudentGroupResponseDto::new)
                 .toList();

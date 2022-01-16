@@ -35,6 +35,7 @@ import {InputTextareaModule} from "primeng/inputtextarea";
 import {RippleModule} from "primeng/ripple";
 import {ConfirmationService, MessageService} from "primeng/api";
 import {CardModule} from "primeng/card";
+import {ProgressSpinnerModule} from "primeng/progressspinner";
 
 // todo: transfer all entities to modules
 
@@ -61,7 +62,8 @@ const PRIMENG_MODULES = [
   InputTextareaModule,
   RippleModule,
   CardModule,
-  InputTextModule
+  InputTextModule,
+  ProgressSpinnerModule
 ];
 
 const MDB_BOOTSTRAP_MODULES = [

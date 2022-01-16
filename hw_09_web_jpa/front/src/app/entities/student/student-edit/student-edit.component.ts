@@ -21,6 +21,7 @@ export class StudentEditComponent implements OnInit {
   date: Date;
   groups: StudentGroup[];
   groupsForSelect: any[] = [];
+  isLoading: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -36,7 +37,7 @@ export class StudentEditComponent implements OnInit {
       if (!!student.birthDay) {
         this.date = moment(student.birthDay, 'DD-MM-YYYY').toDate();
       }
-      if (!!this.student.studentGroupUuids) {
+      if (this.student.studentGroupUuids?.length) {
         // todo: fix it
         const observableStudentGroups$: ObservableInput<any>[] = [];
         this.student.studentGroupUuids.forEach(uuid => {
@@ -44,7 +45,10 @@ export class StudentEditComponent implements OnInit {
         });
         forkJoin(observableStudentGroups$).subscribe((groups: StudentGroup[]) => {
           this.groups = groups;
+          this.isLoading = false;
         });
+      } else {
+        this.isLoading = false;
       }
       this.createGroupForSelect();
     });

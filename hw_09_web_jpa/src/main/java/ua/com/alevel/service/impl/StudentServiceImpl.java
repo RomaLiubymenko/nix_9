@@ -7,7 +7,7 @@ import ua.com.alevel.persistence.datatable.DataTableResponse;
 import ua.com.alevel.persistence.entity.Student;
 import ua.com.alevel.service.StudentService;
 
-import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Service
@@ -57,7 +57,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public List<Student> findAll() {
+    public Set<Student> findAll() {
         return studentDao.findAll();
     }
 }

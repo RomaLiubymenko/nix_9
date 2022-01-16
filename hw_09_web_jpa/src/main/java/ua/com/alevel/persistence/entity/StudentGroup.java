@@ -1,6 +1,5 @@
 package ua.com.alevel.persistence.entity;
 
-import org.hibernate.annotations.GenericGenerator;
 import ua.com.alevel.persistence.enumeration.GroupType;
 
 import javax.persistence.*;
@@ -37,6 +36,20 @@ public class StudentGroup extends AbstractEntity {
             joinColumns = @JoinColumn(name = "student_group_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "student_id", referencedColumnName = "id"))
     private Set<Student> students = new HashSet<>();
+
+    public void addStudent(Student student) {
+        if (!students.contains(student)) {
+            students.add(student);
+            student.addStudentGroup(this);
+        }
+    }
+
+    public void removeStudent(Student student) {
+        if (students.contains(student)) {
+            students.remove(student);
+            student.removeStudentGroup(this);
+        }
+    }
 
     public Long getId() {
         return id;
@@ -94,10 +107,10 @@ public class StudentGroup extends AbstractEntity {
     @Override
     public String toString() {
         return "StudentGroup{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", groupType=" + groupType +
-                ", students=" + students +
                 '}';
     }
 }

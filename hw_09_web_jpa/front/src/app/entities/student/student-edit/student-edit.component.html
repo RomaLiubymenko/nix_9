@@ -1,30 +1,32 @@
 <p-card>
-  <p-toast></p-toast>
-  <div class="p-grid">
+  <p-progressSpinner class="loader" *ngIf="isLoading; else loaded"></p-progressSpinner>
+  <ng-template #loaded>
+    <p-toast></p-toast>
+    <div class="p-grid">
 
-    <div class="p-col-6 col-format">
+      <div class="p-col-6 col-format">
       <span class="p-float-label display-label box">
         <input id="first-name-input" type="text" class="input-style" pInputText [(ngModel)]="student.firstName">
         <label for="first-name-input">First name</label>
       </span>
-    </div>
-    <div class="p-col-6 col-format">
+      </div>
+      <div class="p-col-6 col-format">
       <span class="p-float-label display-label box">
         <input id="last-name-input" type="text" pInputText [(ngModel)]="student.lastName">
         <label for="last-name-input">Last Name</label>
       </span>
-    </div>
+      </div>
 
-    <div class="p-col-6 col-format">
-      <p-multiSelect
-        [options]="groupsForSelect"
-        [(ngModel)]="student.studentGroupUuids"
-        defaultLabel="Select a groups"
-        optionLabel="name"
-        optionValue="code">
-      </p-multiSelect>
-    </div>
-    <span class="p-float-label display-label">
+      <div class="p-col-6 col-format">
+        <p-multiSelect
+          [options]="groupsForSelect"
+          [(ngModel)]="student.studentGroupUuids"
+          defaultLabel="Select a groups"
+          optionLabel="name"
+          optionValue="code">
+        </p-multiSelect>
+      </div>
+      <span class="p-float-label display-label">
       <p>Birthday</p>
       <p-calendar
         [(ngModel)]="date"
@@ -33,12 +35,13 @@
       </p-calendar>
     </span>
 
-  </div>
-
-  <form>
-    <div class="text-center">
-      <button pButton pRipple label="Save" icon="pi pi-check" (click)="save()"></button>
     </div>
-  </form>
-  <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+
+    <form>
+      <div class="text-center">
+        <button pButton pRipple label="Save" icon="pi pi-check" (click)="save()"></button>
+      </div>
+    </form>
+    <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+  </ng-template>
 </p-card>

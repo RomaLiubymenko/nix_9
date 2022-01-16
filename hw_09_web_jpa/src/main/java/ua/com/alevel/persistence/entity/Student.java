@@ -32,6 +32,20 @@ public class Student extends AbstractEntity {
     @ManyToMany(mappedBy = "students")
     private Set<StudentGroup> studentGroups = new HashSet<>();
 
+    public void addStudentGroup(StudentGroup studentGroup) {
+        if (!studentGroups.contains(studentGroup)) {
+            studentGroups.add(studentGroup);
+            studentGroup.addStudent(this);
+        }
+    }
+
+    public void removeStudentGroup(StudentGroup studentGroup) {
+        if (studentGroups.contains(studentGroup)) {
+            studentGroups.remove(studentGroup);
+            studentGroup.removeStudent(this);
+        }
+    }
+
     public Long getId() {
         return id;
     }
@@ -88,10 +102,10 @@ public class Student extends AbstractEntity {
     @Override
     public String toString() {
         return "Student{" +
-                "firstName='" + firstName + '\'' +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", birthDay=" + birthDay +
-                ", studentGroups=" + studentGroups +
                 '}';
     }
 }

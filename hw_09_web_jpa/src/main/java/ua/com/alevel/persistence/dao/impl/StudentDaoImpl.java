@@ -1,5 +1,6 @@
 package ua.com.alevel.persistence.dao.impl;
 
+import org.hibernate.Hibernate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import ua.com.alevel.persistence.dao.StudentDao;
@@ -15,6 +16,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Repository
@@ -57,14 +59,14 @@ public class StudentDaoImpl implements StudentDao {
 
     @Override
     public Student findByUuid(UUID uuid) {
-        return (Student) entityManager.createQuery("select student from Student student where student.uuid = :uuid")
+        return (Student) entityManager.createQuery("select student from Student student left join fetch student.studentGroups where student.uuid = :uuid")
                 .setParameter("uuid", uuid)
                 .getSingleResult();
     }
 
     @Override
-    public List<Student> findAll() {
-        return entityManager.createQuery("select student from Student student").getResultList();
+    public Set<Student> findAll() {
+        return Set.copyOf(entityManager.createQuery("select student from Student student left join fetch student.studentGroups", Student.class).getResultList());
     }
 
     @Override
@@ -82,6 +84,9 @@ public class StudentDaoImpl implements StudentDao {
                 .setFirstResult(page)
                 .setMaxResults(request.getPageSize())
                 .getResultList();
+        for (Student student : students) {
+            Hibernate.initialize(student.getStudentGroups());
+        }
         DataTableResponse<Student> dataTableResponse = new DataTableResponse<>();
         dataTableResponse.setEntities(students);
         return dataTableResponse;

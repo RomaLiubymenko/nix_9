@@ -7,7 +7,7 @@ import ua.com.alevel.persistence.datatable.DataTableResponse;
 import ua.com.alevel.persistence.entity.StudentGroup;
 import ua.com.alevel.service.StudentGroupService;
 
-import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 
@@ -58,7 +58,7 @@ public class StudentGroupServiceImpl implements StudentGroupService {
     }
 
     @Override
-    public List<StudentGroup> findAll() {
+    public Set<StudentGroup> findAll() {
         return studentGroupDao.findAll();
     }
 }
