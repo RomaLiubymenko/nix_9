@@ -40,6 +40,7 @@
         <module>hw_07_io_nio</module>
         <module>hw_08_web_jdbc</module>
         <module>hw_09_web_jpa</module>
+        <module>hw_10_repository</module>
     </modules>
 
     <properties>

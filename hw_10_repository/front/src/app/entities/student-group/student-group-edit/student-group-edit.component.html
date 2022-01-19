@@ -1,0 +1,44 @@
+<p-card>
+  <p-toast></p-toast>
+  <p-progressSpinner class="loader" *ngIf="isLoading; else loaded"></p-progressSpinner>
+  <ng-template #loaded>
+    <div class="p-grid">
+
+      <div class="p-col-6 col-format">
+      <span class="p-float-label display-label box">
+        <input id="group-name-input" type="text" class="input-style" pInputText
+               [(ngModel)]="group.name">
+        <label for="group-name-input">Group name</label>
+      </span>
+      </div>
+      <div class="p-col-6 col-format">
+      <span class="p-float-label display-label box">
+        <input id="description-input" type="text" pInputText [(ngModel)]="group.description">
+        <label for="description-input">Description</label>
+      </span>
+      </div>
+
+      <span class="p-float-label display-label">
+     <p-dropdown [options]="groupTypes" [(ngModel)]="group.groupType" optionValue="code"
+                 placeholder="Select a group type"
+                 optionLabel="name"></p-dropdown>
+    </span>
+      <div class="p-col-6 col-format">
+        <p-multiSelect
+          [options]="studentsForSelect"
+          [(ngModel)]="selectedStudentUuids"
+          defaultLabel="Select a students"
+          optionLabel="name"
+          optionValue="code">
+        </p-multiSelect>
+      </div>
+    </div>
+
+    <form>
+      <div class="text-center">
+        <button pButton pRipple label="Save" icon="pi pi-check" (click)="save()"></button>
+      </div>
+    </form>
+  </ng-template>
+  <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+</p-card>
