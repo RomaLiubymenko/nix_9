@@ -19,5 +19,6 @@
 15. Introduction to Spring.
 16. Spring Boot, IoC, MVC, Data, Test, Security, JPA.
 17. Web development.
+18. And others...
 
-See [assigment directory](https://github.com/rliubymenko/nix_9/tree/master/assigments) with all tasks.
+See [assigment directory](https://github.com/rliubymenko/nix_9/tree/master/assignments) with all tasks.
