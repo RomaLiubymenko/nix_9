@@ -21,4 +21,4 @@
 17. Web development.
 18. And others...
 
-See [assigment directory](https://github.com/rliubymenko/nix_9/tree/master/assignments) with all tasks.
+See [assigment directory](https://github.com/rliubymenko/nix_9/tree/master/assignments) with all task descriptions.
